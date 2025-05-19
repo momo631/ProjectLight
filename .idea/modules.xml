@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/All-Things-Tinkers.iml" filepath="$PROJECT_DIR$/All-Things-Tinkers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/All-Things-Tinkers.main.iml" filepath="$PROJECT_DIR$/.idea/modules/All-Things-Tinkers.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/All-Things-Tinkers.test.iml" filepath="$PROJECT_DIR$/.idea/modules/All-Things-Tinkers.test.iml" />
     </modules>
   </component>
 </project>
