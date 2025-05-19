@@ -1,0 +1,487 @@
+{
+    "parts": [
+        {
+            "path": "momotinker:item/tool/trigger_blade/blade",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/broken_blade",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/broken_blade",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/excitation_device",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/blade",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/sheath_body",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/sheath_body_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/sheath_body_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/charge_3/sheath_body_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/excitation_device_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/excitation_device_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/charge_3/excitation_device_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/blade_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/charge_2/blade_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/tough_handle_1_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/trigger_blade/large/charge_1/tough_handle_2_1",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/broken_spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/broken_spear_head",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/spear_body",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/spear_body",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/tough_handle_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/divine_punishment_spear/large/tough_handle_3",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cube/broken_cube_component",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_sword/large/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_riding_spear/large/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/entropy_burning_cannon/large/cube_component_5",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/moon_lock/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/moon_lock/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/moon_lock/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/coronal_key/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/large/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/large/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/coronal_key/large/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/part_6",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/part_6",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/eclipse_container/large/charge_1/part_6",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+        {
+            "path": "momotinker:item/tool/pocket_watch/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/pocket_watch/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/pocket_watch/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/pocket_watch/broken_part",
+            "stat_type": "tconstruct:binding"
+        },
+
+
+
+        {
+            "path": "momotinker:item/tool/chain_sword/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/broken_part",
+            "stat_type": "tconstruct:binding"
+        },
+
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_3",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_4",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/part_5",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "momotinker:item/tool/chain_sword/large/broken_part",
+            "stat_type": "tconstruct:binding"
+        }
+    ],
+    "replace": false
+}
