@@ -1,0 +1,21 @@
+{
+  "effect.all_things_tinkers.hongwen": "红温",
+
+  "fluid.all_things_tinkers.molten_laomo": "熔融墨",
+
+  "item.all_things_tinkers.molten_laomo_bucket": "熔融墨桶",
+
+  "block.all_things_tinkers.laomo_block": "墨块",
+
+  "item.all_things_tinkers.laomo": "墨",
+
+  "itemGroup.all_things_tinkers.materials": "墨工坊模组-材料",
+
+  "material.all_things_tinkers.laomo": "墨",
+  "material.all_things_tinkers.laomo.encyclopedia": "大百科上的内容",
+  "material.all_things_tinkers.laomo.flavor": "tconjei悬浮显示和对应等级宝典的内容",
+
+  "modifier.all_things_tinkers.laomochuji": "牢墨出击",
+  "modifier.all_things_tinkers.laomochuji.flavor": "词条标题",
+  "modifier.all_things_tinkers.laomochuji.description": "详细描述"
+}
