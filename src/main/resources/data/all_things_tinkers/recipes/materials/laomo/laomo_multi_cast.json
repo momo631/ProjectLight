@@ -5,9 +5,9 @@
   },
   "cast_consumed": false,
   "fluid": {
-    "name": "momotinker:molten_laomo",
+    "name": "all_things_tinkers:molten_laomo",
     "amount": 90
   },
-  "result": "momotinker:laomo",
+  "result": "all_things_tinkers:laomo",
   "cooling_time": 200
 }

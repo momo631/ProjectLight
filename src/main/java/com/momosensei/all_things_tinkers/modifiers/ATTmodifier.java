@@ -1,4 +1,4 @@
-package com.momosensei.momotinker.Modifiers;
+package com.momosensei.all_things_tinkers.modifiers;
 
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
@@ -67,7 +67,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
-public abstract class momomodifier extends Modifier implements MeleeDamageModifierHook, MeleeHitModifierHook, DamageDealtModifierHook,
+public abstract class ATTmodifier extends Modifier implements MeleeDamageModifierHook, MeleeHitModifierHook, DamageDealtModifierHook,
         BowAmmoModifierHook, ProjectileHitModifierHook, ProjectileLaunchModifierHook,KeybindInteractModifierHook, ProcessLootModifierHook,
         EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook, AttributesModifierHook,
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
@@ -85,10 +85,8 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.VOLATILE_DATA,EtSTLibHooks.MODIFY_DAMAGE_SOURCE);
     }
 
-    public momomodifier() {
-        MinecraftForge.EVENT_BUS.addListener(this::LivingHurtEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::LivingAttackEvent);
-        MinecraftForge.EVENT_BUS.addListener(this::LivingDamageEvent);
+    public ATTmodifier() {
+
     }
 
     @Override
@@ -248,15 +246,6 @@ public abstract class momomodifier extends Modifier implements MeleeDamageModifi
     }
 
     public void onModifierRemoved(IToolStackView tool) {
-    }
-
-    public void LivingHurtEvent(LivingHurtEvent target) {
-    }
-
-    public void LivingAttackEvent(LivingAttackEvent target) {
-    }
-
-    public void LivingDamageEvent(LivingDamageEvent target) {
     }
 
     @Override

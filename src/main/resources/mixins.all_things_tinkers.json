@@ -1,13 +1,12 @@
 {
   "required": true,
   "minVersion": "0.7",
-  "package": "com.momosensei.momotinker.mixins",
+  "package": "com.momosensei.all_things_tinkers.mixins",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "momotinker.refmap.json",
+  "refmap": "all_things_tinkers.refmap.json",
   "mixins": [
   ],
   "client": [
-    "GameRendererMixin"
   ],
   "server": [
   ],

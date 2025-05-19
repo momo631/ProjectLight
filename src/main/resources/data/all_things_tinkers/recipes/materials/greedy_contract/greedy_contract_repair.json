@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material",
-  "ingredient": {
-    "item": "momotinker:greedy_contract"
-  },
-  "value": 1,
-  "needed": 1,
-  "material": "momotinker:greedy_contract"
-}

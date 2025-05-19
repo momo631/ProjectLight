@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_melting",
-  "input": "momotinker:greedy_contract",
-  "temperature": 1500,
-  "result": {
-    "fluid": "momotinker:molten_greedy_contract",
-    "amount": 90
-  }
-}

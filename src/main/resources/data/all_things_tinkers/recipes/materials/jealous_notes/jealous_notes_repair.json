@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material",
-  "ingredient": {
-    "item": "momotinker:jealous_notes"
-  },
-  "value": 1,
-  "needed": 1,
-  "material": "momotinker:jealous_notes"
-}

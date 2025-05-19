@@ -1,9 +1,8 @@
-package com.momosensei.momotinker.Modifiers.modifiers;
+package com.momosensei.all_things_tinkers.modifiers.modifiers;
 
+import com.momosensei.all_things_tinkers.modifiers.ATTmodifier;
 
-import com.momosensei.momotinker.Modifiers.momomodifier;
-
-public class Test extends momomodifier {
+public class Test extends ATTmodifier {
     public Test() {
     }
 }

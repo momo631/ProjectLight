@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_melting",
-  "input": "momotinker:rage_stone_statue",
-  "temperature": 1500,
-  "result": {
-    "fluid": "momotinker:molten_rage_stone_statue",
-    "amount": 90
-  }
-}

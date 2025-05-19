@@ -1,21 +1,21 @@
 {
-  "effect.momotinker.hongwen": "红温",
+  "effect.all_things_tinkers.hongwen": "红温",
 
-  "fluid.momotinker.molten_laomo": "熔融墨",
+  "fluid.all_things_tinkers.molten_laomo": "熔融墨",
 
-  "item.momotinker.molten_laomo_bucket": "熔融墨桶",
+  "item.all_things_tinkers.molten_laomo_bucket": "熔融墨桶",
 
-  "block.momotinker.laomo_block": "墨块",
+  "block.all_things_tinkers.laomo_block": "墨块",
 
-  "item.momotinker.laomo": "墨",
+  "item.all_things_tinkers.laomo": "墨",
 
-  "itemGroup.momotinker.materials": "墨工坊模组-材料",
+  "itemGroup.all_things_tinkers.materials": "墨工坊模组-材料",
 
-  "material.momotinker.laomo": "墨",
-  "material.momotinker.laomo.encyclopedia": "大百科上的内容",
-  "material.momotinker.laomo.flavor": "tconjei悬浮显示和对应等级宝典的内容",
+  "material.all_things_tinkers.laomo": "墨",
+  "material.all_things_tinkers.laomo.encyclopedia": "大百科上的内容",
+  "material.all_things_tinkers.laomo.flavor": "tconjei悬浮显示和对应等级宝典的内容",
 
-  "modifier.momotinker.laomochuji": "牢墨出击",
-  "modifier.momotinker.laomochuji.flavor": "词条标题",
-  "modifier.momotinker.laomochuji.description": "详细描述"
+  "modifier.all_things_tinkers.laomochuji": "牢墨出击",
+  "modifier.all_things_tinkers.laomochuji.flavor": "词条标题",
+  "modifier.all_things_tinkers.laomochuji.description": "详细描述"
 }

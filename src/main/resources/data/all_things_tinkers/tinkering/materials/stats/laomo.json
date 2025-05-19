@@ -62,10 +62,10 @@
       "block_amount": 2.0,
       "shield_amount": 15
     },
-    "momotinker:fluid_chamber": {
+    "all_things_tinkers:fluid_chamber": {
       "fluid_capacity": 72000
     },
-    "momotinker:ionizer": {
+    "all_things_tinkers:ionizer": {
       "cooldown": 40,
       "triggerrange": 35,
       "damagemultiplier": 6.5

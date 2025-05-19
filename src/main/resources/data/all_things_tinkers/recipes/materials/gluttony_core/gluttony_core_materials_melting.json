@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_melting",
-  "input": "momotinker:gluttony_core",
-  "temperature": 1500,
-  "result": {
-    "fluid": "momotinker:molten_gluttony_core",
-    "amount": 90
-  }
-}

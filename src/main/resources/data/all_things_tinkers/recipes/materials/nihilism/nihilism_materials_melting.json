@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_melting",
-  "input": "momotinker:nihilism",
-  "temperature": 12000,
-  "result": {
-    "fluid": "momotinker:molten_nihilism",
-    "amount": 90
-  }
-}

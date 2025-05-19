@@ -1,9 +1,9 @@
 {
   "type": "tconstruct:material_melting",
-  "input": "momotinker:laomo",
+  "input": "all_things_tinkers:laomo",
   "temperature": 6300,
   "result": {
-    "fluid": "momotinker:molten_laomo",
+    "fluid": "all_things_tinkers:molten_laomo",
     "amount": 90
   }
 }

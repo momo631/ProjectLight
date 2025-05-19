@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material",
-  "ingredient": {
-    "item": "momotinker:spirit_visage"
-  },
-  "value": 1,
-  "needed": 1,
-  "material": "momotinker:spirit_visage"
-}

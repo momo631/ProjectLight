@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_fluid",
-  "fluid": {
-    "name": "momotinker:molten_dimensional_prism",
-    "amount": 90
-  },
-  "temperature": 1500,
-  "output": "momotinker:dimensional_prism"
-}

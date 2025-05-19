@@ -1,28 +1,5 @@
 {
   "values": [
-    "momotinker:molten_laomo",
-    "momotinker:molten_arriving_at_the_other_shore",
-    "momotinker:molten_spirit_visage",
-    "momotinker:molten_heartsteel",
-    "momotinker:molten_gluttony_core",
-    "momotinker:molten_greedy_contract",
-    "momotinker:molten_lust_mirror",
-    "momotinker:molten_arrogance_proof",
-    "momotinker:molten_rage_stone_statue",
-    "momotinker:molten_lazy_grail",
-    "momotinker:molten_jealous_notes",
-    "momotinker:molten_interdimensional_crystal",
-    "momotinker:molten_dimensional_prism",
-    "momotinker:molten_dim_dark_gold",
-    "momotinker:molten_stained_blood_gold",
-    "momotinker:molten_starry_mysterious_gold",
-    "momotinker:molten_devouring_demon_gold",
-    "momotinker:molten_nihilism",
-    "momotinker:molten_meteor_nucleus",
-    "momotinker:molten_ashen_platinum",
-    "momotinker:molten_hadal_platinum",
-    "momotinker:molten_stellar_core_platinum",
-    "momotinker:molten_crystallized_platinum",
-    "momotinker:molten_living_platinum"
+    "all_things_tinkers:molten_laomo"
   ]
 }

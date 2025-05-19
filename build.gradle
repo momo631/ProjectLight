@@ -7,11 +7,11 @@ plugins {
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-version = "1.20.1-1.2.5.2"
-group = "com.momosensei.momotinker"
+version = "1.20.1-1.0"
+group = "com.momosensei.all_things_tinkers"
 
 base {
-    archivesName = 'momotinker'
+    archivesName = 'all_things_tinkers'
 }
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
@@ -77,7 +77,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                "momotinker" {
+                "all_things_tinkers" {
                     source sourceSets.main
                 }
             }
@@ -92,7 +92,7 @@ minecraft {
         }
 
         server {
-            property 'forge.enabledGameTestNamespaces', "momotinker"
+            property 'forge.enabledGameTestNamespaces', "all_things_tinkers"
             args '--nogui'
         }
 
@@ -100,7 +100,7 @@ minecraft {
         // By default, the server will crash when no gametests are provided.
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
-            property 'forge.enabledGameTestNamespaces', "momotinker"
+            property 'forge.enabledGameTestNamespaces', "all_things_tinkers"
         }
 
         data {
@@ -108,7 +108,7 @@ minecraft {
             workingDirectory project.file('run-data')
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', "momotinker", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', "all_things_tinkers", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
     }
 }
@@ -134,7 +134,6 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    maven { url = "https://maven.kosmx.dev/" }
     flatDir {
         dir 'libs'
     }
@@ -143,7 +142,6 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
-    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
     implementation fg.deobf("curse.maven:etst-lib-1206379:6266577")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
     implementation fileTree(dir: 'lib', includes: ['*.jar'])
@@ -173,7 +171,7 @@ tasks.named('processResources', ProcessResources).configure {
 tasks.named('jar', Jar).configure {
     manifest {
         attributes([
-                'Specification-Title'     : 'momotinker',
+                'Specification-Title'     : 'all_things_tinkers',
                 'Specification-Vendor'    : 'momosensei',
                 'Specification-Version'   : '1', // We are version 1 of ourselves
                 'Implementation-Title'    : project.name,
@@ -212,5 +210,5 @@ tasks.withType(JavaCompile).configureEach {options.encoding = 'UTF-8'
 }
 
 mixin {
-    add sourceSets.main, 'momotinker.refmap.json'
+    add sourceSets.main, 'all_things_tinkers.refmap.json'
 }

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "momotinker:laomo_block"
+          "name": "all_things_tinkers:laomo_block"
         }
       ],
       "conditions": [
