@@ -9,13 +9,29 @@
 
   "item.all_things_tinkers.laomo": "墨",
 
-  "itemGroup.all_things_tinkers.materials": "墨工坊模组-材料",
+  "itemGroup.all_things_tinkers.materials": "万物为匠-材料",
 
   "material.all_things_tinkers.laomo": "墨",
   "material.all_things_tinkers.laomo.encyclopedia": "大百科上的内容",
   "material.all_things_tinkers.laomo.flavor": "tconjei悬浮显示和对应等级宝典的内容",
 
-  "modifier.all_things_tinkers.laomochuji": "牢墨出击",
-  "modifier.all_things_tinkers.laomochuji.flavor": "词条标题",
-  "modifier.all_things_tinkers.laomochuji.description": "详细描述"
+
+  "material.all_things_tinkers.quartz": "下界石英",
+  "material.all_things_tinkers.quartz.encyclopedia": "来自下界的常见矿物",
+  "modifier.all_things_tinkers.sharpsword": "锐利",
+  "modifier.all_things_tinkers.sharpsword.flavor": "更锋利的剑刃",
+  "modifier.all_things_tinkers.sharpsword.description": "少量增加近战伤害",
+  "modifier.all_things_tinkers.sharparrows": "锐利",
+  "modifier.all_things_tinkers.sharparrows.flavor": "更锋利的箭头",
+  "modifier.all_things_tinkers.sharparrows.description": "少量增加箭矢伤害",
+  "modifier.all_things_tinkers.brittleness": "脆性",
+  "modifier.all_things_tinkers.brittleness.flavor": "更易损但更坚硬",
+  "modifier.all_things_tinkers.brittleness.description": "提供的护甲值少量增加但是会增加耐久消耗",
+
+  "material.all_things_tinkers.redstone": "红石",
+  "material.all_things_tinkers.redstone.encyclopedia": "红石",
+  "modifier.all_things_tinkers.potionextension": "药水延长",
+  "modifier.all_things_tinkers.potionextension.flavor": "酿药好手",
+  "modifier.all_things_tinkers.potionextension.description": "获得的药水效果会获得更长的持续时间"
+
 }

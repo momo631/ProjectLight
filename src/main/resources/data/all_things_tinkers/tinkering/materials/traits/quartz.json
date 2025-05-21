@@ -1,0 +1,22 @@
+{
+  "perStat": {
+    "tconstruct:melee_harvest": [
+      {
+        "name": "all_things_tinkers:sharpsword",
+        "level": 1
+      }
+    ],
+    "tconstruct:armor": [
+      {
+        "name": "all_things_tinkers:brittleness",
+        "level": 1
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "all_things_tinkers:sharparrows",
+        "level": 1
+      }
+    ]
+  }
+}

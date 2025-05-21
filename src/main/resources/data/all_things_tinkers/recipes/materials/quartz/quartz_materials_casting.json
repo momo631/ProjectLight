@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "tconstruct:molten_quartz",
+    "amount": 100
+  },
+  "temperature": 637,
+  "output": "all_things_tinkers:quartz"
+}

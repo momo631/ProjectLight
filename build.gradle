@@ -11,7 +11,7 @@ version = "1.20.1-1.0"
 group = "com.momosensei.all_things_tinkers"
 
 base {
-    archivesName = 'all_things_tinkers'
+    archivesName = 'All-Things-Tinkers'
 }
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.

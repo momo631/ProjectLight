@@ -9,6 +9,7 @@ import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import slimeknights.mantle.registration.deferred.FluidDeferredRegister;
 import slimeknights.mantle.registration.object.FlowingFluidObject;
+import slimeknights.mantle.registration.object.FluidObject;
 
 import static com.momosensei.all_things_tinkers.AllThingsTinkers.MOD_ID;
 import static slimeknights.tconstruct.fluids.block.BurningLiquidBlock.createBurning;

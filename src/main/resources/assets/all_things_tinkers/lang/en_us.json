@@ -9,13 +9,23 @@
 
   "item.all_things_tinkers.laomo": "墨",
 
-  "itemGroup.all_things_tinkers.materials": "墨工坊模组-材料",
+  "itemGroup.all_things_tinkers.materials": "All-Things-Tinkers-Materials",
 
   "material.all_things_tinkers.laomo": "墨",
   "material.all_things_tinkers.laomo.encyclopedia": "大百科上的内容",
   "material.all_things_tinkers.laomo.flavor": "tconjei悬浮显示和对应等级宝典的内容",
 
-  "modifier.all_things_tinkers.laomochuji": "牢墨出击",
-  "modifier.all_things_tinkers.laomochuji.flavor": "词条标题",
-  "modifier.all_things_tinkers.laomochuji.description": "详细描述"
+
+  "material.all_things_tinkers.quartz": "Nether Quartz",
+  "material.all_things_tinkers.quartz.encyclopedia": "Common minerals from Nether",
+  "modifier.all_things_tinkers.sharpsword": "Sharp Sword",
+  "modifier.all_things_tinkers.sharpsword.flavor": "Sharper sword blades",
+  "modifier.all_things_tinkers.sharpsword.description": "Minor increase in melee damage",
+  "modifier.all_things_tinkers.sharparrows": "Sharp Arrows",
+  "modifier.all_things_tinkers.sharparrows.flavor": "Sharper arrows",
+  "modifier.all_things_tinkers.sharparrows.description": "Minor increase in arrow damage",
+  "modifier.all_things_tinkers.brittleness": "Brittleness",
+  "modifier.all_things_tinkers.brittleness.flavor": "More vulnerable but stronger",
+  "modifier.all_things_tinkers.brittleness.description": "The armor value provided increases slightly, but it will increase durability consumption"
+
 }
