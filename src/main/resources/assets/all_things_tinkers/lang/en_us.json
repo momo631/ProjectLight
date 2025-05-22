@@ -26,6 +26,12 @@
   "modifier.all_things_tinkers.sharparrows.description": "Minor increase in arrow damage",
   "modifier.all_things_tinkers.brittleness": "Brittleness",
   "modifier.all_things_tinkers.brittleness.flavor": "More vulnerable but stronger",
-  "modifier.all_things_tinkers.brittleness.description": "The armor value provided increases slightly, but it will increase durability consumption"
+  "modifier.all_things_tinkers.brittleness.description": "The armor value provided increases slightly, but it will increase durability consumption",
+
+  "material.all_things_tinkers.redstone": "Red Stone",
+  "material.all_things_tinkers.redstone.encyclopedia": "Why can this thing be used for brewing potions",
+  "modifier.all_things_tinkers.potionextension": "Potion Extension",
+  "modifier.all_things_tinkers.potionextension.flavor": "A good hand at brewing medicine",
+  "modifier.all_things_tinkers.potionextension.description": "When the positive potion effect is about to expire, it will extend the time at the cost of lowering the level"
 
 }

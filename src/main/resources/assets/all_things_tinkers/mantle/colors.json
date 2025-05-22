@@ -1,8 +1,10 @@
 {
   "material.all_things_tinkers": {
-    "laomo": "#596d99"
+    "laomo": "#596d99",
+    "redstone": "#FF0000"
   },
   "modifier.all_things_tinkers": {
-    "laomochuji": "#596d99"
+    "laomochuji": "#596d99",
+    "potionextension": "#FF0000"
   }
 }

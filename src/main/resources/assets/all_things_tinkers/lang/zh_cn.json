@@ -29,9 +29,9 @@
   "modifier.all_things_tinkers.brittleness.description": "提供的护甲值少量增加但是会增加耐久消耗",
 
   "material.all_things_tinkers.redstone": "红石",
-  "material.all_things_tinkers.redstone.encyclopedia": "红石",
+  "material.all_things_tinkers.redstone.encyclopedia": "为什么这东西可以用于酿造药水",
   "modifier.all_things_tinkers.potionextension": "药水延长",
-  "modifier.all_things_tinkers.potionextension.flavor": "酿药好手",
-  "modifier.all_things_tinkers.potionextension.description": "获得的药水效果会获得更长的持续时间"
+  "modifier.all_things_tinkers.potionextension.flavor": "酿药一把好手",
+  "modifier.all_things_tinkers.potionextension.description": "正面药水效果即将到期时会以降低等级为代价延长时间"
 
 }
