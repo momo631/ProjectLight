@@ -38,5 +38,6 @@ public class ATTFluid {
     }
 
     //public static final FluidObject<ForgeFlowingFluid> molten_laomo = register("molten_laomo", 5867,10,false);
+    public static final FluidObject<ForgeFlowingFluid> molten_glowstone = register("molten_glowstone", 532,10,false);
 
 }

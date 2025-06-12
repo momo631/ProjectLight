@@ -15,5 +15,8 @@ public class ATTModifiers {
     public static final StaticModifier<SharpArrows> sharparrows=MODIFIERS.register("sharparrows", SharpArrows::new);
     public static final StaticModifier<Brittleness> brittleness=MODIFIERS.register("brittleness", Brittleness::new);
     public static final StaticModifier<PotionExtension> potionextension=MODIFIERS.register("potionextension", PotionExtension::new);
+    public static final StaticModifier<PotionUpgrade> potionupgrade=MODIFIERS.register("potionupgrade", PotionUpgrade::new);
+    public static final StaticModifier<Fluorescence> fluorescence=MODIFIERS.register("fluorescence", Fluorescence::new);
+    public static final StaticModifier<FluorescenceA> fluorescencea=MODIFIERS.register("fluorescencea", FluorescenceA::new);
 
 }

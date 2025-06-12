@@ -2,8 +2,10 @@
   "effect.all_things_tinkers.hongwen": "红温",
 
   "fluid.all_things_tinkers.molten_laomo": "熔融墨",
+  "fluid.all_things_tinkers.molten_glowstone": "熔融萤石",
 
   "item.all_things_tinkers.molten_laomo_bucket": "熔融墨桶",
+  "item.all_things_tinkers.molten_glowstone_bucket": "熔融萤石桶",
 
   "block.all_things_tinkers.laomo_block": "墨块",
 
@@ -32,6 +34,6 @@
   "material.all_things_tinkers.redstone.encyclopedia": "Why can this thing be used for brewing potions",
   "modifier.all_things_tinkers.potionextension": "Potion Extension",
   "modifier.all_things_tinkers.potionextension.flavor": "A good hand at brewing medicine",
-  "modifier.all_things_tinkers.potionextension.description": "When the positive potion effect is about to expire, it will extend the time at the cost of lowering the level"
+  "modifier.all_things_tinkers.potionextension.description": "The positive potion effect obtained from the original version will prolong its duration\n"
 
 }
