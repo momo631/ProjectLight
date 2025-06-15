@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "name": "minecraft:redstone"
+  },
+  "result": {
+    "fluid": "all_things_tinkers:molten_redstone",
+    "amount": 90
+  },
+  "temperature": 532,
+  "time": 20
+}

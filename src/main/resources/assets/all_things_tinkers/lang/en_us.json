@@ -2,9 +2,11 @@
   "effect.all_things_tinkers.hongwen": "红温",
 
   "fluid.all_things_tinkers.molten_laomo": "熔融墨",
+  "fluid.all_things_tinkers.molten_redstone": "熔融红石",
   "fluid.all_things_tinkers.molten_glowstone": "熔融萤石",
 
   "item.all_things_tinkers.molten_laomo_bucket": "熔融墨桶",
+  "item.all_things_tinkers.molten_redstone_bucket": "熔融红石桶",
   "item.all_things_tinkers.molten_glowstone_bucket": "熔融萤石桶",
 
   "block.all_things_tinkers.laomo_block": "墨块",
@@ -34,6 +36,17 @@
   "material.all_things_tinkers.redstone.encyclopedia": "Why can this thing be used for brewing potions",
   "modifier.all_things_tinkers.potionextension": "Potion Extension",
   "modifier.all_things_tinkers.potionextension.flavor": "A good hand at brewing medicine",
-  "modifier.all_things_tinkers.potionextension.description": "The positive potion effect obtained from the original version will prolong its duration\n"
+  "modifier.all_things_tinkers.potionextension.description": "The positive potion effect obtained from the original version will prolong its duration\n",
 
+  "material.all_things_tinkers.glowstone": "萤石",
+  "material.all_things_tinkers.glowstone.encyclopedia": "为什么这东西可以用于酿造药水",
+  "modifier.all_things_tinkers.potionupgrade": "药水升级",
+  "modifier.all_things_tinkers.potionupgrade.flavor": "酿药有一手",
+  "modifier.all_things_tinkers.potionupgrade.description": "获得的来自原版的正面药水效果会提高一级，但是持续时间会缩短",
+  "modifier.all_things_tinkers.fluorescence": "荧光",
+  "modifier.all_things_tinkers.fluorescence.flavor": "过于闪耀或许并不是好事",
+  "modifier.all_things_tinkers.fluorescence.description": "击中目标会使其发光",
+  "modifier.all_things_tinkers.fluorescencea": "荧光",
+  "modifier.all_things_tinkers.fluorescencea.flavor": "过于闪耀或许并不是好事",
+  "modifier.all_things_tinkers.fluorescencea.description": "被攻击时会使攻击者发光"
 }

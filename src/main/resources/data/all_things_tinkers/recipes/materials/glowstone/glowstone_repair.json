@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:material",
   "ingredient": {
-    "name": "minecraft:glowstone_dust"
+    "item": "minecraft:glowstone_dust"
   },
   "value": 1,
   "needed": 4,

@@ -1,10 +1,18 @@
 {
   "material.all_things_tinkers": {
     "laomo": "#596d99",
-    "redstone": "#FF0000"
+    "quartz": "#D4CABA",
+    "redstone": "#FF0000",
+    "glowstone": "#FFC169"
   },
   "modifier.all_things_tinkers": {
     "laomochuji": "#596d99",
-    "potionextension": "#FF0000"
+    "sharpsword": "#EAE5DE",
+    "sharparrows": "#EAE5DE",
+    "brittleness": "#D4CABA",
+    "potionextension": "#FF0000",
+    "potionupgrade": "#FFC169",
+    "fluorescence": "#FFFE00",
+    "fluorescencea": "#FFFE00"
   }
 }

@@ -1,6 +1,8 @@
 {
+  "replace": false,
   "values": [
-    "all_things_tinkers:molten_laomo",
-    "all_things_tinkers:molten_glowstone"
+    "#forge:molten_redstone",
+    "#forge:molten_glowstone",
+    "all_things_tinkers:molten_laomo"
   ]
 }

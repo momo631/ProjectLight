@@ -1,0 +1,5 @@
+{
+  "color": "FFFFFFFF",
+  "flowing": "all_things_tinkers:fluid/molten_redstone/flowing",
+  "still": "all_things_tinkers:fluid/molten_redstone/still"
+}

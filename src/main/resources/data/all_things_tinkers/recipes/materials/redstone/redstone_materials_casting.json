@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "amount": 90,
+    "tag": "forge:molten_redstone"
+  },
+  "temperature": 532,
+  "output": "all_things_tinkers:redstone"
+}

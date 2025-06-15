@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "all_things_tinkers:redstone",
+  "temperature": 532,
+  "result": {
+    "fluid": "all_things_tinkers:molten_redstone",
+    "amount": 90
+  }
+}
