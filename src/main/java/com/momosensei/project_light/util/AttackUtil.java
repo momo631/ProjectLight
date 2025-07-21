@@ -1,6 +1,7 @@
 package com.momosensei.project_light.util;
 
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
@@ -12,6 +13,9 @@ import java.util.List;
 import java.util.function.DoubleSupplier;
 
 public class AttackUtil {
+    public AttackUtil() {
+
+    }
     public static void executeall(LevelAccessor world, double x, double y, double z, LivingEntity damager) {
         if (damager instanceof Player player) {
             if (!damager.getCommandSenderWorld().isClientSide) {
@@ -31,5 +35,14 @@ public class AttackUtil {
     }
     public static DoubleSupplier getCooldownFunction(Player player, InteractionHand hand) {
         return () -> player.getAttackStrengthScale(0.5f);
+    }
+
+    public static float getCriticalFloat(Player player,float damageModifier){
+        float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
+        boolean fullyCharged = (0.2f + d * d * 0.8f) > 0.9f;
+        boolean isCritical = fullyCharged && player.fallDistance > 0.0F && !player.onGround() && !player.onClimbable() && !player.isInWater() && !player.hasEffect(MobEffects.BLINDNESS) && !player.isPassenger() && !player.isSprinting();
+        if (isCritical){
+            return damageModifier;
+        }else return 1f;
     }
 }

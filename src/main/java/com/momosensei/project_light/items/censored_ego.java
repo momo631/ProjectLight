@@ -33,10 +33,9 @@ public class censored_ego extends Item{
     public censored_ego(Properties properties) {
         super(properties.rarity(Rarity.create("aleph",ChatFormatting.DARK_RED)).stacksTo(1).fireResistant());
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 29D, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 14D, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -3.25F, AttributeModifier.Operation.ADDITION));
         this.attributes = builder.build();
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
@@ -65,30 +64,6 @@ public class censored_ego extends Item{
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return Items.DIAMOND_SWORD.canApplyAtEnchantingTable(new ItemStack(Items.DIAMOND_SWORD), enchantment);
-    }
-
-    private void livinghurtevent(LivingHurtEvent event) {
-        Entity a = event.getEntity();
-        Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&!player.level().isClientSide()&&a instanceof LivingEntity living) {
-            ItemStack stack = player.getMainHandItem();
-            if (!stack.isEmpty()&&stack.is(PLItem.censored_ego.get())) {
-                float c = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-                float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
-                float e = c * (0.2f + d * d * 0.8f);
-                event.setAmount(event.getAmount()*((float) 11 /30));
-                //event.getSource().bypassArmor().bypassMagic();
-                living.invulnerableTime = 0;
-                living.hurt(player.level().damageSources().starve(),e*((float) 11 /30));
-                living.invulnerableTime = 0;
-            }
-        }
-        if (a instanceof Player player&&!player.level().isClientSide()) {
-            ItemStack stack = player.getMainHandItem();
-            if (!stack.isEmpty()&&stack.is(PLItem.censored_ego.get())&&!player.isDeadOrDying()) {
-                player.heal(event.getAmount()*0.4f);
-            }
-        }
     }
 
     @Override

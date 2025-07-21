@@ -1,6 +1,7 @@
 package com.momosensei.project_light;
 
 
+import com.momosensei.project_light.event.PLHurtEvent;
 import com.momosensei.project_light.register.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,6 +28,7 @@ public class ProjectLight {
         PLEffects.EFFECT.register(eventBus);
         PLEntities.ENTITIES.register(eventBus);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, PLConfig.spec);
+        MinecraftForge.EVENT_BUS.register(new PLHurtEvent());
 
     }
     //Resourcelocation

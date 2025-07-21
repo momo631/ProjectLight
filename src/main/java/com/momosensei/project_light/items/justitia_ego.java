@@ -35,11 +35,10 @@ public class justitia_ego extends Item{
     public justitia_ego(Properties properties) {
         super(properties.rarity(Rarity.create("aleph",ChatFormatting.DARK_RED)).stacksTo(1).fireResistant());
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 3D, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 1D, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -3.5F, AttributeModifier.Operation.ADDITION));
         builder.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier( "Tool modifier", 1F, AttributeModifier.Operation.ADDITION));
         this.attributes = builder.build();
-        MinecraftForge.EVENT_BUS.addListener(this::livinghurtevent);
     }
 
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
@@ -68,35 +67,6 @@ public class justitia_ego extends Item{
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return Items.DIAMOND_SWORD.canApplyAtEnchantingTable(new ItemStack(Items.DIAMOND_SWORD), enchantment);
-    }
-
-    private void livinghurtevent(LivingHurtEvent event) {
-        Entity a = event.getEntity();
-        Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&!player.level().isClientSide()&&a instanceof LivingEntity living) {
-            ItemStack stack = player.getMainHandItem();
-            if (!stack.isEmpty()&&stack.is(PLItem.justitia_ego.get())) {
-                float c = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-                float d = getCooldownFunctionFloat(player, InteractionHand.MAIN_HAND);
-                float e = c * (0.2f + d * d * 0.8f);
-                float f = e * living.getMaxHealth() * 0.01f;
-                if (living.getMaxHealth() < 100) {
-                    f = e;
-                }
-                living.invulnerableTime = 0;
-                reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
-                reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
-                reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
-                reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
-                reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
-                event.setAmount(0);
-            }
-        }
     }
 
     @Override

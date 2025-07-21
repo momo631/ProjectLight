@@ -1,15 +1,15 @@
 {
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "project_light:item/ego/0",
-		"2": "project_light:item/ego/1",
-		"3": "project_light:item/ego/2",
-		"4": "project_light:item/ego/3",
-		"6": "project_light:item/ego/5",
-		"7": "project_light:item/ego/4",
-		"8": "project_light:item/ego/6",
-		"9": "project_light:item/ego/7",
-		"10": "project_light:item/ego/8"
+		"1": "project_light:item/ego/twilight_ego/0",
+		"2": "project_light:item/ego/twilight_ego/1",
+		"3": "project_light:item/ego/twilight_ego/2",
+		"4": "project_light:item/ego/twilight_ego/3",
+		"6": "project_light:item/ego/twilight_ego/5",
+		"7": "project_light:item/ego/twilight_ego/4",
+		"8": "project_light:item/ego/twilight_ego/6",
+		"9": "project_light:item/ego/twilight_ego/7",
+		"10": "project_light:item/ego/twilight_ego/8"
 	},
 	"elements": [
 		{
