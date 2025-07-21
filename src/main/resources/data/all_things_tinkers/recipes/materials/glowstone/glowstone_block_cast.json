@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:casting_basin",
-  "fluid": {
-    "amount": 1000,
-    "tag": "forge:molten_glowstone"
-  },
-  "result": "minecraft:glowstone",
-  "cooling_time": 165
-}

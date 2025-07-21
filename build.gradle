@@ -8,10 +8,10 @@ plugins {
 }
 
 version = "1.20.1-1.0"
-group = "com.momosensei.all_things_tinkers"
+group = "com.momosensei.project_light"
 
 base {
-    archivesName = 'All-Things-Tinkers'
+    archivesName = 'ProjectLight'
 }
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
@@ -77,7 +77,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                "all_things_tinkers" {
+                "project_light" {
                     source sourceSets.main
                 }
             }
@@ -92,7 +92,7 @@ minecraft {
         }
 
         server {
-            property 'forge.enabledGameTestNamespaces', "all_things_tinkers"
+            property 'forge.enabledGameTestNamespaces', "project_light"
             args '--nogui'
         }
 
@@ -100,7 +100,7 @@ minecraft {
         // By default, the server will crash when no gametests are provided.
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
-            property 'forge.enabledGameTestNamespaces', "all_things_tinkers"
+            property 'forge.enabledGameTestNamespaces', "project_light"
         }
 
         data {
@@ -108,7 +108,7 @@ minecraft {
             workingDirectory project.file('run-data')
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', "all_things_tinkers", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', "project_light", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
     }
 }
@@ -134,6 +134,8 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    //maven { url = "https://maven.kosmx.dev/" }
+    //maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
     flatDir {
         dir 'libs'
     }
@@ -142,7 +144,8 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
-    implementation fg.deobf("curse.maven:etst-lib-1206379:6266577")
+//    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+//    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
     implementation fileTree(dir: 'lib', includes: ['*.jar'])
 }
@@ -158,7 +161,7 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
-            player_animator_version: player_animator_version,
+            //player_animator_version: player_animator_version,
     ]
     inputs.properties replaceProperties
 
@@ -171,7 +174,7 @@ tasks.named('processResources', ProcessResources).configure {
 tasks.named('jar', Jar).configure {
     manifest {
         attributes([
-                'Specification-Title'     : 'all_things_tinkers',
+                'Specification-Title'     : 'project_light',
                 'Specification-Vendor'    : 'momosensei',
                 'Specification-Version'   : '1', // We are version 1 of ourselves
                 'Implementation-Title'    : project.name,
@@ -210,5 +213,5 @@ tasks.withType(JavaCompile).configureEach {options.encoding = 'UTF-8'
 }
 
 mixin {
-    add sourceSets.main, 'all_things_tinkers.refmap.json'
+    add sourceSets.main, 'project_light.refmap.json'
 }

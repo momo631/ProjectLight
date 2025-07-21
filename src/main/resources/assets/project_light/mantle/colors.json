@@ -1,0 +1,18 @@
+{
+  "material.project_light": {
+    "laomo": "#596d99",
+    "quartz": "#D4CABA",
+    "redstone": "#FF0000",
+    "glowstone": "#FFC169"
+  },
+  "modifier.project_light": {
+    "laomochuji": "#596d99",
+    "sharpsword": "#EAE5DE",
+    "sharparrows": "#EAE5DE",
+    "brittleness": "#D4CABA",
+    "potionextension": "#FF0000",
+    "potionupgrade": "#FFC169",
+    "fluorescence": "#FFFE00",
+    "fluorescencea": "#FFFE00"
+  }
+}

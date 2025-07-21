@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_melting",
-  "input": "all_things_tinkers:quartz",
-  "temperature": 800,
-  "result": {
-    "fluid": "tconstruct:molten_quartz",
-    "amount": 100
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "all_things_tinkers:block/laomo_block"
-  }
-}

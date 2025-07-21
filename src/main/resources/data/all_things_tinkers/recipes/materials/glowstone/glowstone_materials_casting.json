@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_fluid",
-  "fluid": {
-    "amount": 250,
-    "tag": "forge:molten_glowstone"
-  },
-  "temperature": 532,
-  "output": "all_things_tinkers:glowstone"
-}

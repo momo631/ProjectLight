@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/All-Things-Tinkers.main.iml" filepath="$PROJECT_DIR$/.idea/modules/All-Things-Tinkers.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/All-Things-Tinkers.test.iml" filepath="$PROJECT_DIR$/.idea/modules/All-Things-Tinkers.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectLight.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectLight.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProjectLight.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ProjectLight.test.iml" />
     </modules>
   </component>
 </project>

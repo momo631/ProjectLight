@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_melting",
-  "input": "all_things_tinkers:glowstone",
-  "temperature": 532,
-  "result": {
-    "fluid": "all_things_tinkers:molten_glowstone",
-    "amount": 250
-  }
-}
