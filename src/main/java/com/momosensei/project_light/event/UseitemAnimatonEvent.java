@@ -29,11 +29,17 @@ public class UseitemAnimatonEvent {
 	public static void onUseItemStart(LivingEntityUseItemEvent.Finish event) {
 		if (event != null && event.getEntity() != null) {
 			ItemStack stack= event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND);
+
 			if (stack.is(PLItem.twilight_ego.get())) {
 				UseitemAnimaton(event.getEntity().level(), "animation.twilight", event.getEntity());
+			}else
+			if (stack.is(PLItem.justitia_ego.get())) {
+				UseitemAnimaton(event.getEntity().level(), "animation.justitia", event.getEntity());
 			}
+
 		}
 	}
+
 	private static void UseitemAnimaton(LevelAccessor world,String anim, Entity entity) {
 		if (entity == null)
 			return;

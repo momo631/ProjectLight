@@ -14,5 +14,21 @@
         "stream": true
       }
     ]
+  },
+  "justitia_attack": {
+    "sounds": [
+      {
+        "name":"project_light:justitia_attack",
+        "stream": true
+      }
+    ]
+  },
+  "extra_justitia_attack": {
+    "sounds": [
+      {
+        "name":"project_light:extra_justitia_attack",
+        "stream": true
+      }
+    ]
   }
 }

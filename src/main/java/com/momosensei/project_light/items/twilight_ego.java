@@ -60,8 +60,7 @@ public class twilight_ego extends Item{
         if (living instanceof Player player&&!player.getCooldowns().isOnCooldown(stack.getItem())) {
             player.playSound(PLSounds.ExtraTwilightAttack.get());
             c.putInt(s, 48);
-
-            //player.getCooldowns().addCooldown(stack.getItem(),1200);
+            player.getCooldowns().addCooldown(stack.getItem(),1200);
         }
         return stack;
     }

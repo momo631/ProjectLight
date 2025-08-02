@@ -4,10 +4,13 @@ package com.momosensei.project_light.items;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.momosensei.project_light.register.PLItem;
+import com.momosensei.project_light.sounds.PLSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,11 +24,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Random;
 
 import static com.momosensei.project_light.util.AttackUtil.getCooldownFunctionFloat;
 import static com.momosensei.project_light.util.PenetratingDamage.reflectionPenetratingDamage;
@@ -39,12 +44,46 @@ public class justitia_ego extends Item{
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -3.5F, AttributeModifier.Operation.ADDITION));
         builder.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier( "Tool modifier", 1F, AttributeModifier.Operation.ADDITION));
         this.attributes = builder.build();
+        MinecraftForge.EVENT_BUS.addListener(this::OnPlayerTick);
     }
-
+    private void OnPlayerTick(TickEvent.PlayerTickEvent event) {
+        Player player = event.player;
+        ItemStack stack = player.getMainHandItem();
+        CompoundTag tag = stack.getOrCreateTag();
+        if (stack.isEmpty()) return;
+        if (stack.is(PLItem.justitia_ego.get())){
+            String s = "justitia_extra_attack";
+            if (!player.level().isClientSide)return;
+            if (tag.getInt(s) == 58) player.playSound(PLSounds.JustitiaAttack.get(),0.6F,1);
+            if (tag.getInt(s) == 48) player.playSound(PLSounds.JustitiaAttack.get(),0.6F,1);
+            if (tag.getInt(s) == 38) player.playSound(PLSounds.JustitiaAttack.get(),0.6F,1);
+            if (tag.getInt(s) == 22) player.playSound(PLSounds.ExtraJustitiaAttack.get(),0.6F,1);
+        }
+    }
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
         return equipmentSlot == EquipmentSlot.MAINHAND ? this.attributes : super.getDefaultAttributeModifiers(equipmentSlot);
     }
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        player.startUsingItem(hand);
+        if (player.getCooldowns().isOnCooldown(stack.getItem()))return InteractionResultHolder.fail(stack);
+        return InteractionResultHolder.consume(stack);
+    }
 
+    public int getUseDuration(ItemStack stack) {
+        return 1;
+    }
+
+    @Override
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
+        CompoundTag c = stack.getOrCreateTag();
+        String s = "justitia_extra_attack";
+        if (living instanceof Player player&&!player.getCooldowns().isOnCooldown(stack.getItem())) {
+            c.putInt(s, 59);
+            player.getCooldowns().addCooldown(stack.getItem(),1800);
+        }
+        return stack;
+    }
     public boolean canAttackBlock(BlockState state, Level worldIn, BlockPos pos, Player player) {
         return !player.isCreative();
     }

@@ -152,6 +152,8 @@ public class PLHurtEvent {
                 living.invulnerableTime = 0;
             }
             if (stack.is(PLItem.justitia_ego.get())) {
+                living.playSound(PLSounds.JustitiaAttack.get());
+
                 living.invulnerableTime = 0;
                 reflectionPenetratingDamage(a, player, f);
                 living.invulnerableTime = 0;
@@ -209,12 +211,8 @@ public class PLHurtEvent {
         ItemStack stack = player.getMainHandItem();
         CompoundTag tag = stack.getOrCreateTag();
         Random random = new Random();
-
         if (player.level().isClientSide)return;
         if (stack.isEmpty()) return;
-
-
-
         float c = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
 
         if (stack.is(PLItem.twilight_ego.get())){
@@ -223,7 +221,6 @@ public class PLHurtEvent {
                 tag.putInt(s, 0);
             }else
             if (tag.getInt(s)==0&&getExtraAttack()) {
-
                 setExtraAttack(false);
             }else
             if (tag.getInt(s)>0) {
@@ -274,6 +271,79 @@ public class PLHurtEvent {
                         }
                     }
                 }
+            }
+        }
+        if (stack.is(PLItem.justitia_ego.get())){
+            String s = "justitia_extra_attack";
+            if (tag.getInt(s)<0) {
+                tag.putInt(s, 0);
+            }else
+            if (tag.getInt(s)==0&&getExtraAttack()) {
+                setExtraAttack(false);
+            }else
+            if (tag.getInt(s)>0) {
+                if (getMainHand()!=player.getInventory().selected) {
+                    setMainHand(player.getInventory().selected);
+                }
+                setExtraAttack(true);
+                tag.putInt(s, tag.getInt(s) - 1);
+
+                List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().expandTowards(player.getLookAngle().x()*3, player.getLookAngle().y(), player.getLookAngle().z()*3).inflate(1, 2, 1));
+                for (LivingEntity a : ls0) {
+                    if (a != player && a != null) {
+                        float e = (c+ 5+random.nextInt(3));
+                        float f = e * a.getMaxHealth() * 0.01f;
+                        if (a.getMaxHealth() < 100) {
+                            f = e;
+                        }
+                        float e1 = (c+ random.nextInt(2));
+                        float f1 = e1 * a.getMaxHealth() * 0.01f;
+                        if (a.getMaxHealth() < 100) {
+                            f1 = e;
+                        }
+                        if (tag.getInt(s) == 57){
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f);
+                        }else
+                        if (tag.getInt(s) == 47){
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f);
+                        }else
+                        if (tag.getInt(s) == 37){
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f);
+                        }else
+                        if (tag.getInt(s) == 14) {
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f1);
+                        }
+                        if (tag.getInt(s) == 12) {
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f1);
+                        }
+                        if (tag.getInt(s) == 10) {
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f1);
+                        }
+                        if (tag.getInt(s) == 8) {
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f1);
+                        }
+                        if (tag.getInt(s) == 6) {
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f1);
+                        }
+                        if (tag.getInt(s) == 4) {
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f1);
+                        }
+                        if (tag.getInt(s) == 2) {
+                            a.invulnerableTime = 0;
+                            reflectionPenetratingDamage(a, player, f1);
+                        }
+                    }
+                }
+
             }
         }
 
