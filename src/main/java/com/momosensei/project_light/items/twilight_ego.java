@@ -3,8 +3,10 @@ package com.momosensei.project_light.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.momosensei.project_light.sounds.PLSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -43,6 +45,7 @@ public class twilight_ego extends Item{
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         player.startUsingItem(hand);
+        if (player.getCooldowns().isOnCooldown(stack.getItem()))return InteractionResultHolder.fail(stack);
         return InteractionResultHolder.consume(stack);
     }
 
@@ -51,8 +54,15 @@ public class twilight_ego extends Item{
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
+        CompoundTag c = stack.getOrCreateTag();
+        String s = "twilight_extra_attack";
+        if (living instanceof Player player&&!player.getCooldowns().isOnCooldown(stack.getItem())) {
+            player.playSound(PLSounds.ExtraTwilightAttack.get());
+            c.putInt(s, 48);
 
+            //player.getCooldowns().addCooldown(stack.getItem(),1200);
+        }
         return stack;
     }
 
@@ -89,29 +99,4 @@ public class twilight_ego extends Item{
         list.add(Component.translatable("project_light.item.twilight_ego5"));
         list.add(Component.translatable("project_light.item.twilight_ego6"));
     }
-    /*
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            private final BlockEntityWithoutLevelRenderer renderer = new twilight_ego_renderer();
-            @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                return renderer;
-            }
-        });
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this,"controller",0,this::predicate));
-    }
-
-    private <E extends IAnimatable> PlayState predicate (AnimationEvent<E> event){
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle"));
-        return PlayState.CONTINUE;
-    }
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }*/
 }

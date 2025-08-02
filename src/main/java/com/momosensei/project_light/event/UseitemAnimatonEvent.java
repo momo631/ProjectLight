@@ -12,6 +12,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,8 +28,9 @@ public class UseitemAnimatonEvent {
 	@SubscribeEvent
 	public static void onUseItemStart(LivingEntityUseItemEvent.Finish event) {
 		if (event != null && event.getEntity() != null) {
-			if (event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND).is(PLItem.twilight_ego.get())) {
-				UseitemAnimaton(event.getEntity().level(), "charged_throw_original", event.getEntity());
+			ItemStack stack= event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND);
+			if (stack.is(PLItem.twilight_ego.get())) {
+				UseitemAnimaton(event.getEntity().level(), "animation.twilight", event.getEntity());
 			}
 		}
 	}
@@ -50,6 +53,6 @@ public class UseitemAnimatonEvent {
 				}
 			}
 		}
-		FirstPersonMode.isFirstPersonPass();
+		FirstPersonMode.setFirstPersonPass(false);
 	}
 }

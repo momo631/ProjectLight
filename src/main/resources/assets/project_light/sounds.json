@@ -1,0 +1,18 @@
+{
+  "twilight_attack": {
+    "sounds": [
+      {
+        "name":"project_light:twilight_attack",
+        "stream": true
+      }
+    ]
+  },
+  "extra_twilight_attack": {
+    "sounds": [
+      {
+        "name":"project_light:extra_twilight_attack",
+        "stream": true
+      }
+    ]
+  }
+}
