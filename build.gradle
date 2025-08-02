@@ -134,8 +134,8 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    //maven { url = "https://maven.kosmx.dev/" }
-    //maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
+    maven { url = "https://maven.kosmx.dev/" }
+    maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
     flatDir {
         dir 'libs'
     }
@@ -144,8 +144,8 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
-//    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
-//    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
+    implementation fg.deobf("curse.maven:geckolib-388172:6333474")
+    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
     implementation fileTree(dir: 'lib', includes: ['*.jar'])
 }

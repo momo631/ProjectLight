@@ -16,7 +16,7 @@ public class PLTables {
     public static final RegistryObject<CreativeModeTab> tabTables = CREATIVE_TAB.register(
             "items", () -> CreativeModeTab.builder()
                     .title(Component.translatable("item.project_light"))
-                    .icon(() -> new ItemStack(PLItem.laomo.get()))
+                    .icon(() -> new ItemStack(PLItem.twilight_ego_a.get()))
                     .displayItems(PLTables::addTabItems)
                     .build());
 
@@ -33,5 +33,6 @@ public class PLTables {
         output.accept(PLItem.justitia_ego.get());
         output.accept(PLItem.smile_ego.get());
         output.accept(PLItem.censored_ego.get());
+        output.accept(PLItem.paradise_lost_ego.get());
     }
 }

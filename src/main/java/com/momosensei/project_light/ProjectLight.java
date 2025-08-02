@@ -4,15 +4,21 @@ package com.momosensei.project_light;
 import com.momosensei.project_light.event.PLHurtEvent;
 import com.momosensei.project_light.register.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import software.bernie.geckolib.GeckoLib;
 
-@Mod(ProjectLight.MOD_ID)
-@Mod.EventBusSubscriber(
+import static com.momosensei.project_light.ProjectLight.MOD_ID;
+
+@Mod(MOD_ID)
+@Mod.EventBusSubscriber(modid =MOD_ID,
         bus = Mod.EventBusSubscriber.Bus.MOD
 )
 
@@ -29,8 +35,9 @@ public class ProjectLight {
         PLEntities.ENTITIES.register(eventBus);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, PLConfig.spec);
         MinecraftForge.EVENT_BUS.register(new PLHurtEvent());
-
+        GeckoLib.initialize();
     }
+
     //Resourcelocation
     public static ResourceLocation getResource(String id) {
         return new ResourceLocation("project_light", id);

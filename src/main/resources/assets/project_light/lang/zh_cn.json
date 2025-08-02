@@ -6,8 +6,8 @@
   "project_light.item.twilight_ego2": "这把武器会同时造成物理，精神，侵蚀和灵魂伤害（普通伤害，魔法伤害，虚空伤害，目标最大生命值的百分比伤害）。",
   "project_light.item.twilight_ego3": "这把武器每隔一段时间可发起一次特殊攻击。",
   "project_light.item.twilight_ego4": "如果有员工持有这件E.G.O武器，则终末鸟就不会出现。",
-  "project_light.item.twilight_ego5": "大鸟那永不闭合的眼睛、高鸟那能衡量一切罪恶的天平、小鸟那能吞噬一切的巨口，这三者守护着黑森林的和平。",
-  "project_light.item.twilight_ego6": "而那些能够同时驾驭这三者的人也能带来和平。",
+  "project_light.item.twilight_ego5": "永不闭合的眼睛、衡量罪孽的天平、吞噬万物的巨口，这三者守护着黑森林的和平。",
+  "project_light.item.twilight_ego6": "而那位能够同时驾驭这三者的人也能带来和平。",
   
   "item.project_light.justitia_ego": "正义裁决者",
   "project_light.item.justitia_ego1": "这把武器每次攻击时会造成5次灵魂伤害（目标最大生命值的百分比伤害）。",
@@ -33,6 +33,16 @@
   "project_light.item.censored_ego2": "这把武器的普通攻击和面板不同，实际上为2次基础攻击为7点的侵蚀伤害。",
   "project_light.item.censored_ego3": "这把武器每隔一段时间可发起一次特殊攻击。",
   "project_light.item.censored_ego4": "这§4“CENSORED”§r可以被用来§4“CENSORED”§r，但是会令看着§4“CENSORED”§r的人感到严重的§4“CENSORED”§r。",
-  "project_light.item.censored_ego5": "如果你注视着这§4“CENSORED”§r超过三秒，你便会感到严重的§4“CENSORED”§r与§4“CENSORED”§r，甚至令你§4“CENSORED”§r。"
+  "project_light.item.censored_ego5": "如果你注视着这§4“CENSORED”§r超过三秒，你便会感到严重的§4“CENSORED”§r与§4“CENSORED”§r，甚至令你§4“CENSORED”§r。",
 
+  "item.project_light.paradise_lost_ego": "失乐园",
+  "project_light.item.paradise_lost_ego1": "这把武器攻击时会对范围内所有中立和敌对目标造成伤害。",
+  "project_light.item.paradise_lost_ego2": "持有者无法自然恢复生命值和精神值。",
+  "project_light.item.paradise_lost_ego3": "发起普通攻击时，这把武器能减少被击中单位的移动速度，同时恢复持有者的生命值和精神值。",
+  "project_light.item.paradise_lost_ego4": "发起特殊攻击时，这把武器会生成一个力场盾，减少受到的所有类型的伤害。",
+  "project_light.item.paradise_lost_ego5": "这把武器每隔一段时间可发起一次特殊攻击。",
+  "project_light.item.paradise_lost_ego6": "§o乐园的大门因我的敲击而缓缓打开。§",
+  "project_light.item.paradise_lost_ego7": "§o我自终末而来，我并无留恋，只是在此驻足。§",
+  "project_light.item.paradise_lost_ego8": "§o我就是那个点燃希望之灯，面对世界之人。§",
+  "project_light.item.paradise_lost_ego9": "§o我心爱的人儿，从现在开始，我会将那最美妙的，无比璀璨的道路展现在你们面前。§"
 }
