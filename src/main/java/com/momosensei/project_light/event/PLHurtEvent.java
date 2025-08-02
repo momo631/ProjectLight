@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -42,6 +43,7 @@ public class PLHurtEvent {
         MinecraftForge.EVENT_BUS.addListener(this::onLeftClickBlock);
         MinecraftForge.EVENT_BUS.addListener(this::onMouseScrolling);
         MinecraftForge.EVENT_BUS.addListener(this::onLivingSwapItems);
+        MinecraftForge.EVENT_BUS.addListener(this::onMovementInputUpdate);
         MinecraftForge.EVENT_BUS.addListener(this::onKeyInput);
     }
     private float damageModifier;
@@ -86,6 +88,14 @@ public class PLHurtEvent {
             event.setCanceled(true);
         }
     }
+    public void onMovementInputUpdate(MovementInputUpdateEvent event) {
+        if (getExtraAttack()) {
+            event.getInput().forwardImpulse = 0;
+            event.getInput().leftImpulse = 0;
+            event.getInput().jumping = false;
+            event.getInput().shiftKeyDown = false;
+        }
+    }
     private int MainHand;
     public void onKeyInput(InputEvent.Key event) {
         Minecraft mc = Minecraft.getInstance();
@@ -98,6 +108,7 @@ public class PLHurtEvent {
             mc.player.getInventory().selected = getMainHand();
         }
     }
+
     public int getMainHand() {
         return this.MainHand;
     }
@@ -202,6 +213,8 @@ public class PLHurtEvent {
         if (player.level().isClientSide)return;
         if (stack.isEmpty()) return;
 
+
+
         float c = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
 
         if (stack.is(PLItem.twilight_ego.get())){
@@ -210,11 +223,10 @@ public class PLHurtEvent {
                 tag.putInt(s, 0);
             }else
             if (tag.getInt(s)==0&&getExtraAttack()) {
-                player.setDeltaMovement(player.getDeltaMovement());
+
                 setExtraAttack(false);
             }else
             if (tag.getInt(s)>0) {
-                player.setDeltaMovement(new Vec3(0.1, 0.1, 0.1));
                 if (getMainHand()!=player.getInventory().selected) {
                     setMainHand(player.getInventory().selected);
                 }
@@ -233,12 +245,12 @@ public class PLHurtEvent {
                             a.hurt(player.level().damageSources().lightningBolt(),e);
                             a.invulnerableTime = 0;
                         }else
-                        if (tag.getInt(s) == 36){
+                        if (tag.getInt(s) == 35){
                             a.invulnerableTime = 0;
                             a.hurt(player.level().damageSources().magic(),e);
                             a.invulnerableTime = 0;
                         }else
-                        if (tag.getInt(s) == 25){
+                        if (tag.getInt(s) == 23){
                             a.invulnerableTime = 0;
                             a.hurt(player.level().damageSources().starve(),e);
                             a.invulnerableTime = 0;
