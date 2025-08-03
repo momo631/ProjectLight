@@ -37,6 +37,7 @@ public class PenetratingDamage {
         if (DATA_HEALTH_ID == null) return;
         float currentHealth = living.getEntityData().get(DATA_HEALTH_ID);
         float newHealth = currentHealth-value;
+        living.invulnerableTime=0;
         living.getEntityData().set(DATA_HEALTH_ID, newHealth);
         if (living.getHealth() <= 0.0F) {
             living.die(player.level().damageSources().playerAttack(player));

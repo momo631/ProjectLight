@@ -2,6 +2,7 @@ package com.momosensei.project_light;
 
 
 import com.momosensei.project_light.event.PLHurtEvent;
+import com.momosensei.project_light.event.PLSoundsEvent;
 import com.momosensei.project_light.register.*;
 import com.momosensei.project_light.sounds.PLSounds;
 import net.minecraft.resources.ResourceLocation;
@@ -35,6 +36,7 @@ public class ProjectLight {
         PLSounds.SOUNDS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(new PLHurtEvent());
+        MinecraftForge.EVENT_BUS.register(new PLSoundsEvent());
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, PLConfig.spec);
 

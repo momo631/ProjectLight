@@ -8,6 +8,7 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -37,6 +38,21 @@ public class PLDamageSource extends DamageSource {
     }
     public static PLDamageSource Attack(@NotNull DamageSource damageSource){
         return new PLDamageSource(damageSource);
+    }
+    public PLDamageSource setDamageType(ResourceKey<DamageType> damageTypes){
+        this.damageTypes.add(damageTypes);
+        return this;
+    }
+    public static void OtherDamageHurt(Entity target, Player player, DamageSource source,float amount) {
+        if (!(target instanceof LivingEntity living)) return;
+        living.invulnerableTime=0;
+        living.hurt(source,amount);
+        living.invulnerableTime=0;
+        String s = "dead_by";
+        if (living.getHealth() <= 0.0F||!living.isRemoved()&&!living.getPersistentData().hasUUID(s)) {
+            living.die(player.level().damageSources().playerAttack(player));
+            living.getPersistentData().putUUID(s,player.getUUID());
+        }
     }
 
     public PLDamageSource setBypassInvulnerableTime(){

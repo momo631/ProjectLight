@@ -1,10 +1,14 @@
 package com.momosensei.project_light.event;
 
+import com.momosensei.project_light.register.PLDamageSource;
 import com.momosensei.project_light.register.PLItem;
 import com.momosensei.project_light.sounds.PLSounds;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -27,6 +31,7 @@ import org.lwjgl.glfw.GLFW;
 import java.util.List;
 import java.util.Random;
 
+import static com.momosensei.project_light.register.PLDamageSource.OtherDamageHurt;
 import static com.momosensei.project_light.util.AttackUtil.*;
 import static com.momosensei.project_light.util.PenetratingDamage.reflectionPenetratingDamage;
 
@@ -143,42 +148,31 @@ public class PLHurtEvent {
             if (stack.is(PLItem.twilight_ego.get())) {
                 living.playSound(PLSounds.TwilightAttack.get());
 
-                living.invulnerableTime = 0;
-                living.hurt(player.level().damageSources().magic(), e);
-                living.invulnerableTime = 0;
-                living.hurt(player.level().damageSources().starve(), e);
-                living.invulnerableTime = 0;
+                OtherDamageHurt(living,player,player.level().damageSources().magic(),e);
+                OtherDamageHurt(living,player,player.level().damageSources().starve(),e);
                 reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
             }
             if (stack.is(PLItem.justitia_ego.get())) {
                 living.playSound(PLSounds.JustitiaAttack.get());
 
-                living.invulnerableTime = 0;
                 reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
                 reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
                 reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
                 reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
                 reflectionPenetratingDamage(a, player, f);
-                living.invulnerableTime = 0;
                 event.setAmount(0);
-                living.invulnerableTime = 0;
             }
             if (stack.is(PLItem.smile_ego.get())) {
+                living.playSound(PLSounds.SmileAttack.get());
                 living.invulnerableTime = 0;
                 event.setAmount(0);
-                living.invulnerableTime = 0;
-                living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 4));
+                if (player.level() instanceof ServerLevel serverLevel){
+                    serverLevel.sendParticles(ParticleTypes.EXPLOSION, living.getX(), living.getY(), living.getZ(), 0, 0, 0, 0, 1);
+                }
                 List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(1, 0.5, 1));
                 for (LivingEntity targets : ls0) {
                     if (targets != player && targets != null) {
-                        living.invulnerableTime = 0;
-                        targets.hurt(player.level().damageSources().starve(), e);
-                        living.invulnerableTime = 0;
+                        OtherDamageHurt(targets,player,player.level().damageSources().starve(),e);
                         targets.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 4));
                     }
                 }
@@ -186,11 +180,8 @@ public class PLHurtEvent {
             if (stack.is(PLItem.censored_ego.get())) {
                 living.invulnerableTime = 0;
                 event.setAmount(0);
-                living.invulnerableTime = 0;
-                living.hurt(player.level().damageSources().starve(), (e / c) * (c - 8));
-                living.invulnerableTime = 0;
-                living.hurt(player.level().damageSources().starve(), (e / c) * (c - 8));
-                living.invulnerableTime = 0;
+                OtherDamageHurt(living,player,player.level().damageSources().starve(),(e / c) * (c - 8));
+                OtherDamageHurt(living,player,player.level().damageSources().starve(),(e / c) * (c - 8));
             }
             if (stack.is(PLItem.paradise_lost_ego.get())) {
                 living.invulnerableTime = 0;
@@ -238,19 +229,13 @@ public class PLHurtEvent {
                             f = e;
                         }
                         if (tag.getInt(s) == 47){
-                            a.invulnerableTime = 0;
-                            a.hurt(player.level().damageSources().lightningBolt(),e);
-                            a.invulnerableTime = 0;
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player),e);
                         }else
                         if (tag.getInt(s) == 35){
-                            a.invulnerableTime = 0;
-                            a.hurt(player.level().damageSources().magic(),e);
-                            a.invulnerableTime = 0;
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.MAGIC),e);
                         }else
                         if (tag.getInt(s) == 23){
-                            a.invulnerableTime = 0;
-                            a.hurt(player.level().damageSources().starve(),e);
-                            a.invulnerableTime = 0;
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e);
                         }else
                         if (tag.getInt(s) == 9) {
                             float e1 = (c+ 8+random.nextInt(10));
@@ -258,21 +243,16 @@ public class PLHurtEvent {
                             if (a.getMaxHealth() < 100) {
                                 f1 = e;
                             }
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f);
-                            a.invulnerableTime = 0;
-                            a.hurt(player.level().damageSources().lightningBolt(),e1);
-                            a.invulnerableTime = 0;
-                            a.hurt(player.level().damageSources().magic(),e1);
-                            a.invulnerableTime = 0;
-                            a.hurt(player.level().damageSources().starve(),e1);
-                            a.invulnerableTime = 0;
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player),e1);
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.MAGIC),e1);
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e1);
                             reflectionPenetratingDamage(a, player, f1);
                         }
                     }
                 }
             }
-        }
+        }else
         if (stack.is(PLItem.justitia_ego.get())){
             String s = "justitia_extra_attack";
             if (tag.getInt(s)<0) {
@@ -302,48 +282,77 @@ public class PLHurtEvent {
                             f1 = e;
                         }
                         if (tag.getInt(s) == 57){
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f);
                         }else
                         if (tag.getInt(s) == 47){
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f);
                         }else
                         if (tag.getInt(s) == 37){
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f);
                         }else
                         if (tag.getInt(s) == 14) {
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f1);
                         }
                         if (tag.getInt(s) == 12) {
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f1);
                         }
                         if (tag.getInt(s) == 10) {
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f1);
                         }
                         if (tag.getInt(s) == 8) {
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f1);
                         }
                         if (tag.getInt(s) == 6) {
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f1);
                         }
                         if (tag.getInt(s) == 4) {
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f1);
                         }
                         if (tag.getInt(s) == 2) {
-                            a.invulnerableTime = 0;
                             reflectionPenetratingDamage(a, player, f1);
                         }
                     }
                 }
 
+            }
+        }else
+        if (stack.is(PLItem.smile_ego.get())){
+            String s = "smile_extra_attack";
+            if (tag.getInt(s)<0) {
+                tag.putInt(s, 0);
+            }else
+            if (tag.getInt(s)==0&&getExtraAttack()) {
+                setExtraAttack(false);
+            }else
+            if (tag.getInt(s)>0) {
+                if (getMainHand()!=player.getInventory().selected) {
+                    setMainHand(player.getInventory().selected);
+                }
+                setExtraAttack(true);
+                tag.putInt(s, tag.getInt(s) - 1);
+                Vec3 vec3 = new Vec3(player.getLookAngle().x(),0,player.getLookAngle().z()).scale(0.6F);
+                List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().expandTowards(player.getLookAngle().x()*2, player.getLookAngle().y(), player.getLookAngle().z()*2).inflate(1, 1, 1).move(vec3));
+                for (LivingEntity a : ls0) {
+                    if (a != player && a != null) {
+                        float e = (c+ 23+random.nextInt(10));
+                        float e1 = (c-8);
+                        if (tag.getInt(s) == 15){
+                            a.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,60,3));
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e);
+                        }else
+                        if (tag.getInt(s) == 13) {
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e1);
+                        }else
+                        if (tag.getInt(s) == 11) {OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e1);
+                        }else
+                        if (tag.getInt(s) == 9) {OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e1);
+                        }else
+                        if (tag.getInt(s) == 7) {OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e1);
+                        }else
+                        if (tag.getInt(s) == 5) {OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e1);
+                        }
+                    }
+                }
             }
         }
 

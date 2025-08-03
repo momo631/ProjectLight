@@ -30,5 +30,21 @@
         "stream": true
       }
     ]
+  },
+  "smile_attack": {
+    "sounds": [
+      {
+        "name":"project_light:smile_attack",
+        "stream": true
+      }
+    ]
+  },
+  "extra_smile_attack": {
+    "sounds": [
+      {
+        "name":"project_light:extra_smile_attack",
+        "stream": true
+      }
+    ]
   }
 }

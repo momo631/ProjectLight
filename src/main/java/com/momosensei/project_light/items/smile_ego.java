@@ -4,10 +4,13 @@ package com.momosensei.project_light.items;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.momosensei.project_light.register.PLItem;
+import com.momosensei.project_light.sounds.PLSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -39,11 +43,32 @@ public class smile_ego extends Item{
         this.attributes = builder.build();
         MinecraftForge.EVENT_BUS.addListener(this::onEntityDeath);
     }
+
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
         return equipmentSlot == EquipmentSlot.MAINHAND ? this.attributes : ImmutableMultimap.of();
     }
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        player.startUsingItem(hand);
+        if (player.getCooldowns().isOnCooldown(stack.getItem()))return InteractionResultHolder.fail(stack);
+        return InteractionResultHolder.consume(stack);
+    }
 
+    public int getUseDuration(ItemStack stack) {
+        return 1;
+    }
+
+    @Override
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
+        CompoundTag c = stack.getOrCreateTag();
+        String s = "smile_extra_attack";
+        if (living instanceof Player player&&!player.getCooldowns().isOnCooldown(stack.getItem())) {
+            c.putInt(s, 24);
+            player.getCooldowns().addCooldown(stack.getItem(),1800);
+        }
+        return stack;
+    }
     public boolean canAttackBlock(BlockState state, Level worldIn, BlockPos pos, Player player) {
         return !player.isCreative();
     }
@@ -71,16 +96,18 @@ public class smile_ego extends Item{
     private void onEntityDeath(LivingDeathEvent event) {
         LivingEntity a = event.getEntity();
         Entity b = event.getSource().getEntity();
-        if (b instanceof Player player&&a!=null&&!player.level().isClientSide()){
+        if (b instanceof Player player&&a!=null){
             ItemStack stack = player.getMainHandItem();
+            String s = "dead_by";
             if (!stack.isEmpty()&&stack.is(PLItem.smile_ego.get())) {
                 CompoundTag c = stack.getOrCreateTag();
-                if (c.getInt("smile_ego") < 30) {
+                if (c.getInt("smile_ego") < 30&&!a.getPersistentData().hasUUID(s)) {
                     c.putInt("smile_ego", c.getInt("smile_ego") + 1);
+                    a.getPersistentData().putUUID(s,player.getUUID());
                 }
             }
         }
-        if (a instanceof Player player&&!player.level().isClientSide()){
+        if (a instanceof Player player){
             for (int j = 0; j < player.getInventory().items.size(); j++) {
                 ItemStack stack = player.getInventory().getItem(j);
                 CompoundTag c = stack.getTag();

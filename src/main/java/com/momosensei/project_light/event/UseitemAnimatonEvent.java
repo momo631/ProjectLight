@@ -35,6 +35,9 @@ public class UseitemAnimatonEvent {
 			}else
 			if (stack.is(PLItem.justitia_ego.get())) {
 				UseitemAnimaton(event.getEntity().level(), "animation.justitia", event.getEntity());
+			}else
+			if (stack.is(PLItem.smile_ego.get())) {
+				UseitemAnimaton(event.getEntity().level(), "animation.smile", event.getEntity());
 			}
 
 		}

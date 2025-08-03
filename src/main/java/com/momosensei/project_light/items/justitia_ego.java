@@ -44,22 +44,8 @@ public class justitia_ego extends Item{
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -3.5F, AttributeModifier.Operation.ADDITION));
         builder.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier( "Tool modifier", 1F, AttributeModifier.Operation.ADDITION));
         this.attributes = builder.build();
-        MinecraftForge.EVENT_BUS.addListener(this::OnPlayerTick);
     }
-    private void OnPlayerTick(TickEvent.PlayerTickEvent event) {
-        Player player = event.player;
-        ItemStack stack = player.getMainHandItem();
-        CompoundTag tag = stack.getOrCreateTag();
-        if (stack.isEmpty()) return;
-        if (stack.is(PLItem.justitia_ego.get())){
-            String s = "justitia_extra_attack";
-            if (!player.level().isClientSide)return;
-            if (tag.getInt(s) == 58) player.playSound(PLSounds.JustitiaAttack.get(),0.6F,1);
-            if (tag.getInt(s) == 48) player.playSound(PLSounds.JustitiaAttack.get(),0.6F,1);
-            if (tag.getInt(s) == 38) player.playSound(PLSounds.JustitiaAttack.get(),0.6F,1);
-            if (tag.getInt(s) == 22) player.playSound(PLSounds.ExtraJustitiaAttack.get(),0.6F,1);
-        }
-    }
+
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
         return equipmentSlot == EquipmentSlot.MAINHAND ? this.attributes : super.getDefaultAttributeModifiers(equipmentSlot);
     }
