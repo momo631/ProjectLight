@@ -38,7 +38,11 @@ public class UseitemAnimatonEvent {
 			}else
 			if (stack.is(PLItem.smile_ego.get())) {
 				UseitemAnimaton(event.getEntity().level(), "animation.smile", event.getEntity());
+			}else
+			if (stack.is(PLItem.censored_ego.get())) {
+				UseitemAnimaton(event.getEntity().level(), "animation.censored", event.getEntity());
 			}
+
 
 		}
 	}
