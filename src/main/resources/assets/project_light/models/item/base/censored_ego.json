@@ -1,0 +1,92 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "builtin/entity",
+  "texture_size": [
+    32,
+    32
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        -8.5,
+        -4
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        -8.5,
+        -4
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -166,
+        -18.2800000000002,
+        -140.51000000000022
+      ],
+      "translation": [
+        -0.75,
+        -4.25,
+        -2.5
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -168.69,
+        -2.9,
+        -155.61
+      ],
+      "translation": [
+        0.75,
+        -3,
+        -1.5
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        -4.5,
+        8.5
+      ]
+    },
+    "gui": {
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "translation": [
+        -6,
+        -6.75,
+        0
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "translation": [
+        7,
+        -6.25,
+        0
+      ]
+    }
+  },
+  "textures": {
+    "particle": "item/ego/censored_ego/censored_ego"
+  }
+}

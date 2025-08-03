@@ -43,17 +43,7 @@ public class PLDamageSource extends DamageSource {
         this.damageTypes.add(damageTypes);
         return this;
     }
-    public static void OtherDamageHurt(Entity target, Player player, DamageSource source,float amount) {
-        if (!(target instanceof LivingEntity living)) return;
-        living.invulnerableTime=0;
-        living.hurt(source,amount);
-        living.invulnerableTime=0;
-        String s = "dead_by";
-        if (living.getHealth() <= 0.0F&&!living.getPersistentData().hasUUID(s)) {
-            living.die(player.level().damageSources().playerAttack(player));
-            living.getPersistentData().putUUID(s,player.getUUID());
-        }
-    }
+
 
     public PLDamageSource setBypassInvulnerableTime(){
         this.damageTypes.add(ResourceKey.create(Registries.DAMAGE_TYPE,DamageTypeTags.BYPASSES_COOLDOWN.location()));

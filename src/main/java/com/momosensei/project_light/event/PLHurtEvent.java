@@ -3,6 +3,7 @@ package com.momosensei.project_light.event;
 import com.momosensei.project_light.register.PLDamageSource;
 import com.momosensei.project_light.register.PLItem;
 import com.momosensei.project_light.sounds.PLSounds;
+import com.momosensei.project_light.util.AttackUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -31,7 +32,6 @@ import org.lwjgl.glfw.GLFW;
 import java.util.List;
 import java.util.Random;
 
-import static com.momosensei.project_light.register.PLDamageSource.OtherDamageHurt;
 import static com.momosensei.project_light.util.AttackUtil.*;
 import static com.momosensei.project_light.util.PenetratingDamage.reflectionPenetratingDamage;
 
@@ -363,6 +363,37 @@ public class PLHurtEvent {
                 if ((tag.getInt(s)==15||tag.getInt(s)==13||tag.getInt(s)==11||tag.getInt(s)==9||tag.getInt(s)==7||tag.getInt(s)==5)&&player.level() instanceof ServerLevel serverLevel){
                     Vec3 vec = new Vec3(player.getLookAngle().x(),0,player.getLookAngle().z()).scale(2f);
                     serverLevel.sendParticles(ParticleTypes.EXPLOSION, player.getX()+vec.x, player.getY(), player.getZ()+vec.z, 1, 0, 0, 0, 1);
+                }
+            }
+        }else
+        if (stack.is(PLItem.censored_ego.get())){
+            String s = "censored_extra_attack";
+            if (tag.getInt(s)<0) {
+                tag.putInt(s, 0);
+            }else
+            if (tag.getInt(s)==0&&getExtraAttack()) {
+                setExtraAttack(false);
+            }else
+            if (tag.getInt(s)>0) {
+                if (getMainHand()!=player.getInventory().selected) {
+                    setMainHand(player.getInventory().selected);
+                }
+                setExtraAttack(true);
+                tag.putInt(s, tag.getInt(s) - 1);
+                List<LivingEntity> ls0 = AttackUtil.getEntitiesInLookDirection(player, 7, 1);
+                for (LivingEntity a : ls0) {
+                    if (a != player && a != null) {
+                        float e = (c+ random.nextInt(15));
+                        if (tag.getInt(s) == 10){
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e);
+                        }
+                        if (tag.getInt(s) == 8){
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e);
+                        }
+                        if (tag.getInt(s) == 6){
+                            OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e);
+                        }
+                    }
                 }
             }
         }
