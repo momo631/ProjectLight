@@ -2,7 +2,9 @@ package com.momosensei.project_light.event;
 
 import com.momosensei.project_light.register.PLItem;
 import com.momosensei.project_light.sounds.PLSounds;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,6 +30,7 @@ public class PLSoundsEvent {
         if (stack.is(PLItem.smile_ego.get())){
             String s = "smile_extra_attack";
             if (tag.getInt(s) == 19) player.playSound(PLSounds.ExtraSmileAttack.get());
+
         }
     }
 }

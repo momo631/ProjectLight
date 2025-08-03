@@ -11,7 +11,7 @@
 
   "item.project_light.justitia_ego": "Justitia",
   "project_light.item.justitia_ego1": "这把武器每次攻击时会造成5次灵魂伤害（目标最大生命值的百分比伤害）。",
-  "project_light.item.justitia_ego2": "这把武器每隔一段时间可发起一次特殊攻击。",
+  "project_light.item.justitia_ego2": "这把武器每隔一段时间可发起一次特殊攻击。(There is a 40% chance of resetting the cooldown during an attack)",
   "project_light.item.justitia_ego3": "The person who extracted this E.G.O was the most righteous person in the company.",
   "project_light.item.justitia_ego4": "It remembers the scales of the Long Bird that sought not to neglect the weight of even the smallest sins.",
   "project_light.item.justitia_ego5": "This weapon may be able to cut not only flesh, but traces of sin as well.",
@@ -23,7 +23,7 @@
   "project_light.item.smile_ego2": "进行普通攻击时，它会减少被击中单位的移动速度，持续1秒。",
   "project_light.item.smile_ego3": "进行特殊攻击时，它会减少大范围所有非自身单位的移动速度，持续3秒。",
   "project_light.item.smile_ego4": "每击杀一个目标，持有者的生命上限、攻击速度、移动速度均会提高3点，上限为30点，且会在死亡后清除加成。",
-  "project_light.item.smile_ego5": "这把武器每隔一段时间可发起一次特殊攻击。",
+  "project_light.item.smile_ego5": "这把武器每隔一段时间可发起一次特殊攻击。(There is a 30% chance of resetting the cooldown during an attack)",
   "project_light.item.smile_ego6": "It has the pale faces of nameless employees and a giant mouth on it.",
   "project_light.item.smile_ego7": "Upon striking with the weapon, the monstrous mouth opens wide to devour the target.",
   "project_light.item.smile_ego8": "Its hunger insatiable.",

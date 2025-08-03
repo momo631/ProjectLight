@@ -134,6 +134,7 @@ public class PLHurtEvent {
     private void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
         Entity b = event.getSource().getEntity();
+        Random random = new Random();
         if (b instanceof Player player  && a instanceof LivingEntity living&&!event.isCanceled()) {
             ItemStack stack = player.getMainHandItem();
             if (stack.isEmpty()) return;
@@ -161,6 +162,9 @@ public class PLHurtEvent {
                 reflectionPenetratingDamage(a, player, f);
                 reflectionPenetratingDamage(a, player, f);
                 event.setAmount(0);
+                if (player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)<=3){
+                    player.getCooldowns().removeCooldown(stack.getItem());
+                }
             }
             if (stack.is(PLItem.smile_ego.get())) {
                 living.playSound(PLSounds.SmileAttack.get());
@@ -175,6 +179,9 @@ public class PLHurtEvent {
                         OtherDamageHurt(targets,player,player.level().damageSources().starve(),e);
                         targets.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 4));
                     }
+                }
+                if (player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)<=2){
+                    player.getCooldowns().removeCooldown(stack.getItem());
                 }
             }
             if (stack.is(PLItem.censored_ego.get())) {
@@ -330,8 +337,8 @@ public class PLHurtEvent {
                 }
                 setExtraAttack(true);
                 tag.putInt(s, tag.getInt(s) - 1);
-                Vec3 vec3 = new Vec3(player.getLookAngle().x(),0,player.getLookAngle().z()).scale(0.6F);
-                List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().expandTowards(player.getLookAngle().x()*2, player.getLookAngle().y(), player.getLookAngle().z()*2).inflate(1, 1, 1).move(vec3));
+                Vec3 vec3 = new Vec3(player.getLookAngle().x(),0,player.getLookAngle().z()).scale(2f);
+                List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().expandTowards(player.getLookAngle().x(), player.getLookAngle().y(), player.getLookAngle().z()).inflate(2, 1, 2).move(vec3));
                 for (LivingEntity a : ls0) {
                     if (a != player && a != null) {
                         float e = (c+ 23+random.nextInt(10));
@@ -352,6 +359,10 @@ public class PLHurtEvent {
                         if (tag.getInt(s) == 5) {OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e1);
                         }
                     }
+                }
+                if ((tag.getInt(s)==15||tag.getInt(s)==13||tag.getInt(s)==11||tag.getInt(s)==9||tag.getInt(s)==7||tag.getInt(s)==5)&&player.level() instanceof ServerLevel serverLevel){
+                    Vec3 vec = new Vec3(player.getLookAngle().x(),0,player.getLookAngle().z()).scale(2f);
+                    serverLevel.sendParticles(ParticleTypes.EXPLOSION, player.getX()+vec.x, player.getY(), player.getZ()+vec.z, 1, 0, 0, 0, 1);
                 }
             }
         }

@@ -49,7 +49,7 @@ public class PLDamageSource extends DamageSource {
         living.hurt(source,amount);
         living.invulnerableTime=0;
         String s = "dead_by";
-        if (living.getHealth() <= 0.0F||!living.isRemoved()&&!living.getPersistentData().hasUUID(s)) {
+        if (living.getHealth() <= 0.0F&&!living.getPersistentData().hasUUID(s)) {
             living.die(player.level().damageSources().playerAttack(player));
             living.getPersistentData().putUUID(s,player.getUUID());
         }
