@@ -93,20 +93,6 @@ public class AttackUtil {
         Vec3 startPos = player.getEyePosition(1.0F);
         Vec3 endPos = startPos.add(lookVec.scale(distance));
 
-        // 进行方块射线追踪，确定视线实际能到达的最远点
-        BlockHitResult blockRayTrace = world.clip(new ClipContext(
-                startPos,
-                endPos,
-                ClipContext.Block.COLLIDER,
-                ClipContext.Fluid.NONE,
-                player
-        ));
-
-        // 如果击中方块，则以方块位置为终点
-        if (blockRayTrace.getType() == BlockHitResult.Type.BLOCK) {
-            endPos = blockRayTrace.getLocation();
-        }
-
         // 计算检测区域的AABB（轴向对齐边界框）
         AABB detectionBox = calculateDetectionBox(startPos, endPos, radius);
 

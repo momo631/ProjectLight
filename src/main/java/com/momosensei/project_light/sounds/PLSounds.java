@@ -38,4 +38,9 @@ public class PLSounds {
     public static final Supplier<SoundEvent> ExtraSmileAttack = register("extra_smile_attack",
             () -> SoundEvent.createFixedRangeEvent(new ResourceLocation(MOD_ID, "extra_smile_attack"),10));
 
+    public static final Supplier<SoundEvent> CensoredAttack = register("censored_attack",
+            () -> SoundEvent.createFixedRangeEvent(new ResourceLocation(MOD_ID, "censored_attack"),10));
+    public static final Supplier<SoundEvent> ExtraCensoredAttack = register("extra_censored_attack",
+            () -> SoundEvent.createFixedRangeEvent(new ResourceLocation(MOD_ID, "extra_censored_attack"),14));
+
 }

@@ -46,5 +46,21 @@
         "stream": true
       }
     ]
+  },
+  "censored_attack": {
+    "sounds": [
+      {
+        "name":"project_light:censored_attack",
+        "stream": true
+      }
+    ]
+  },
+  "extra_censored_attack": {
+    "sounds": [
+      {
+        "name":"project_light:extra_censored_attack",
+        "stream": true
+      }
+    ]
   }
 }

@@ -185,6 +185,7 @@ public class PLHurtEvent {
                 }
             }
             if (stack.is(PLItem.censored_ego.get())) {
+                living.playSound(PLSounds.CensoredAttack.get());
                 living.invulnerableTime = 0;
                 event.setAmount(0);
                 OtherDamageHurt(living,player,player.level().damageSources().starve(),(e / c) * (c - 8));
@@ -380,7 +381,7 @@ public class PLHurtEvent {
                 }
                 setExtraAttack(true);
                 tag.putInt(s, tag.getInt(s) - 1);
-                List<LivingEntity> ls0 = AttackUtil.getEntitiesInLookDirection(player, 7, 1);
+                List<LivingEntity> ls0 = AttackUtil.getEntitiesInLookDirection(player, 10, 1.2);
                 for (LivingEntity a : ls0) {
                     if (a != player && a != null) {
                         float e = (c+ random.nextInt(15));
