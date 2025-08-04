@@ -148,14 +148,12 @@ public class PLHurtEvent {
             }
             if (stack.is(PLItem.twilight_ego.get())) {
                 living.playSound(PLSounds.TwilightAttack.get());
-
                 OtherDamageHurt(living,player,player.level().damageSources().magic(),e);
                 OtherDamageHurt(living,player,player.level().damageSources().starve(),e);
                 reflectionPenetratingDamage(a, player, f);
             }
             if (stack.is(PLItem.justitia_ego.get())) {
                 living.playSound(PLSounds.JustitiaAttack.get());
-
                 reflectionPenetratingDamage(a, player, f);
                 reflectionPenetratingDamage(a, player, f);
                 reflectionPenetratingDamage(a, player, f);
@@ -200,7 +198,7 @@ public class PLHurtEvent {
                 living.invulnerableTime = 0;
             }
         }
-        if (a instanceof Player player && !player.level().isClientSide()) {
+        if (a instanceof Player player) {
             ItemStack stack = player.getMainHandItem();
             if (!stack.isEmpty() && stack.is(PLItem.censored_ego.get()) && !player.isDeadOrDying()) {
                 player.heal(event.getAmount() * 0.4f);
