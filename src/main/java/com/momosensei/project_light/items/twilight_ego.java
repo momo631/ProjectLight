@@ -57,7 +57,7 @@ public class twilight_ego extends Item{
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
         CompoundTag c = stack.getOrCreateTag();
         String s = "twilight_extra_attack";
-        if (living instanceof Player player&&!player.getCooldowns().isOnCooldown(stack.getItem())) {
+        if (living instanceof Player player&&player.getMainHandItem().is(stack.getItem())&&!player.getCooldowns().isOnCooldown(stack.getItem())) {
             player.playSound(PLSounds.ExtraTwilightAttack.get());
             c.putInt(s, 48);
             player.getCooldowns().addCooldown(stack.getItem(),1200);

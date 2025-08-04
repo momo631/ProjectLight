@@ -64,7 +64,7 @@ public class justitia_ego extends Item{
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
         CompoundTag c = stack.getOrCreateTag();
         String s = "justitia_extra_attack";
-        if (living instanceof Player player&&!player.getCooldowns().isOnCooldown(stack.getItem())) {
+        if (living instanceof Player player&&player.getMainHandItem().is(stack.getItem())&&!player.getCooldowns().isOnCooldown(stack.getItem())) {
             c.putInt(s, 59);
             player.getCooldowns().addCooldown(stack.getItem(),1800);
         }

@@ -190,6 +190,9 @@ public class PLHurtEvent {
                 event.setAmount(0);
                 OtherDamageHurt(living,player,player.level().damageSources().starve(),(e / c) * (c - 8));
                 OtherDamageHurt(living,player,player.level().damageSources().starve(),(e / c) * (c - 8));
+                if (player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)==0){
+                    player.getCooldowns().removeCooldown(stack.getItem());
+                }
             }
             if (stack.is(PLItem.paradise_lost_ego.get())) {
                 living.invulnerableTime = 0;
