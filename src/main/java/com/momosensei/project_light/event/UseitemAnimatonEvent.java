@@ -6,6 +6,8 @@ import com.momosensei.project_light.register.PLItem;
 import com.momosensei.project_light.util.SetupAnimation;
 import dev.kosmx.playerAnim.api.AnimUtils;
 import dev.kosmx.playerAnim.api.firstPerson.FirstPersonMode;
+import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -47,7 +49,7 @@ public class UseitemAnimatonEvent {
 		}
 	}
 
-	private static void UseitemAnimaton(LevelAccessor world,String anim, Entity entity) {
+	public static void UseitemAnimaton(LevelAccessor world, String anim, Entity entity) {
 		if (entity == null)
 			return;
 		if (world.isClientSide()) {
@@ -66,6 +68,6 @@ public class UseitemAnimatonEvent {
 				}
 			}
 		}
-		FirstPersonMode.setFirstPersonPass(false);
+
 	}
 }

@@ -1,6 +1,7 @@
 package com.momosensei.project_light.util;
 
 import com.momosensei.project_light.network.Channel;
+import dev.kosmx.playerAnim.api.firstPerson.FirstPersonMode;
 import dev.kosmx.playerAnim.api.layered.IAnimation;
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
 import dev.kosmx.playerAnim.api.layered.ModifierLayer;
@@ -82,8 +83,8 @@ public class SetupAnimation {
 		if (player instanceof net.minecraft.client.player.AbstractClientPlayer player_) {
 			var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player_).get(new ResourceLocation(MOD_ID, "player_animation"));
             if (animation != null &&override) {
-                animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation(MOD_ID, anim))));
-            }
+                animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation(MOD_ID, anim))).setFirstPersonMode(FirstPersonMode.THIRD_PERSON_MODEL));
+			}
         }
 	}
 }

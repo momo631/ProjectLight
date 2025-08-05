@@ -1,6 +1,8 @@
 package com.momosensei.project_light.event;
 
+import com.momosensei.project_light.entity.entity.ParadiseLostAttackEntity;
 import com.momosensei.project_light.register.PLDamageSource;
+import com.momosensei.project_light.register.PLEntities;
 import com.momosensei.project_light.register.PLItem;
 import com.momosensei.project_light.sounds.PLSounds;
 import com.momosensei.project_light.util.AttackUtil;
@@ -43,7 +45,6 @@ public class PLHurtEvent {
 
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerInteract);
         MinecraftForge.EVENT_BUS.addListener(this::onPlayerAttack);
-        MinecraftForge.EVENT_BUS.addListener(this::onPlayerLeftClick);
         MinecraftForge.EVENT_BUS.addListener(this::onLeftClickEmpty);
         MinecraftForge.EVENT_BUS.addListener(this::onLeftClickBlock);
         MinecraftForge.EVENT_BUS.addListener(this::onMouseScrolling);
@@ -53,43 +54,39 @@ public class PLHurtEvent {
     }
     private float damageModifier;
     private boolean ExtraAttack;
+    private boolean SpecialAttack;
     private void OnCriticalHit(CriticalHitEvent event) {
         if (event.getTarget() != null) {
             damageModifier = event.getDamageModifier();
         }
     }
     public void onPlayerInteract(PlayerInteractEvent.EntityInteract event) {
-        if (event.isCancelable() && getExtraAttack()) {
+        if (event.isCancelable() && (getExtraAttack()||getSpecialAttack())) {
             event.setCanceled(true);
         }
     }
     public void onPlayerAttack(AttackEntityEvent event) {
-        if (event.isCancelable() && getExtraAttack()) {
-            event.setCanceled(true);
-        }
-    }
-    public void onPlayerLeftClick(PlayerInteractEvent.LeftClickBlock event) {
-        if (event.isCancelable() && getExtraAttack()) {
+        if (event.isCancelable() && (getExtraAttack()||getSpecialAttack())) {
             event.setCanceled(true);
         }
     }
     public void onLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
-        if (event.isCancelable() && getExtraAttack()) {
+        if (event.isCancelable() && (getExtraAttack()||getSpecialAttack())) {
             event.setCanceled(true);
         }
     }
     public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
-        if (event.isCancelable() && getExtraAttack()) {
+        if (event.isCancelable() && (getExtraAttack()||getSpecialAttack())) {
             event.setCanceled(true);
         }
     }
     public void onMouseScrolling(InputEvent.MouseScrollingEvent event) {
-        if (event.isCancelable() &&getExtraAttack()){
+        if (event.isCancelable() &&(getExtraAttack()||getSpecialAttack())){
             event.setCanceled(true);
         }
     }
     public void onLivingSwapItems(LivingSwapItemsEvent event) {
-        if (event.isCancelable()&&getExtraAttack()) {
+        if (event.isCancelable()&&(getExtraAttack()||getSpecialAttack())) {
             event.setCanceled(true);
         }
     }
@@ -105,7 +102,7 @@ public class PLHurtEvent {
     public void onKeyInput(InputEvent.Key event) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null) return;
-        if (getExtraAttack()){
+        if ((getExtraAttack()||getSpecialAttack())){
             int key=event.getAction();
             if (key >= GLFW.GLFW_KEY_1 && key <= GLFW.GLFW_KEY_9) {
                 event.setCanceled(true);
@@ -129,7 +126,12 @@ public class PLHurtEvent {
     public void setExtraAttack(boolean extraAttack) {
         this.ExtraAttack = extraAttack;
     }
-
+    public boolean getSpecialAttack() {
+        return this.SpecialAttack;
+    }
+    public void setSpecialAttack(boolean specialAttack) {
+        this.SpecialAttack = specialAttack;
+    }
 
     private void OnLivingHurt(LivingHurtEvent event) {
         Entity a = event.getEntity();
@@ -160,7 +162,7 @@ public class PLHurtEvent {
                 reflectionPenetratingDamage(a, player, f);
                 reflectionPenetratingDamage(a, player, f);
                 event.setAmount(0);
-                if (player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)<=3){
+                if (d>0.9&&player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)<=3){
                     player.getCooldowns().removeCooldown(stack.getItem());
                 }
             }
@@ -178,7 +180,7 @@ public class PLHurtEvent {
                         targets.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 4));
                     }
                 }
-                if (player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)<=2){
+                if (d>0.9&&player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)<=2){
                     player.getCooldowns().removeCooldown(stack.getItem());
                 }
             }
@@ -188,14 +190,18 @@ public class PLHurtEvent {
                 event.setAmount(0);
                 OtherDamageHurt(living,player,player.level().damageSources().starve(),(e / c) * (c - 8));
                 OtherDamageHurt(living,player,player.level().damageSources().starve(),(e / c) * (c - 8));
-                if (player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)==0){
+                if (d>0.9&&player.getCooldowns().isOnCooldown(stack.getItem())&&random.nextInt(10)==0){
                     player.getCooldowns().removeCooldown(stack.getItem());
                 }
             }
             if (stack.is(PLItem.paradise_lost_ego.get())) {
                 living.invulnerableTime = 0;
                 event.setAmount(0);
-                living.invulnerableTime = 0;
+                if (player.level() instanceof ServerLevel level) {
+                    ParadiseLostAttackEntity entity=new ParadiseLostAttackEntity(PLEntities.paradise_lost_attack_entity.get(),level);
+                    entity.setPos(living.position());
+                    level.addFreshEntity(entity);
+                }
             }
         }
         if (a instanceof Player player) {
@@ -394,6 +400,43 @@ public class PLHurtEvent {
                         }
                         if (tag.getInt(s) == 6){
                             OtherDamageHurt(a,player,PLDamageSource.playerAttack(player).setDamageType(DamageTypes.STARVE),e);
+                        }
+                    }
+                }
+            }
+        }
+        if (stack.is(PLItem.paradise_lost_ego.get())) {
+            String s = "paradise_lost_attack";
+            if (tag.getInt(s)<0) {
+                tag.putInt(s, 0);
+            }else
+            if (tag.getInt(s)==0&&getSpecialAttack()) {
+                setSpecialAttack(false);
+            }else
+            if (tag.getInt(s)>0) {
+                if (getMainHand()!=player.getInventory().selected) {
+                    setMainHand(player.getInventory().selected);
+                }
+                setSpecialAttack(true);
+                tag.putInt(s, tag.getInt(s) - 1);
+
+                List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(40));
+                for (LivingEntity a : ls0) {
+                    if (a != player && a != null) {
+                        float e = (c +random.nextInt(6));
+                        if (ls0.size()>=3&&ls0.size()<=6)e=(c -3+random.nextInt(4));else
+                        if (ls0.size()>=7)e=(c -6+random.nextInt(4));
+                        float f = e * a.getMaxHealth() * 0.01f;
+                        if (a.getMaxHealth() < 100) {
+                            f = e;
+                        }
+                        if (tag.getInt(s) == 38) {
+                            OtherDamageHurt(a,player,player.level().damageSources().playerAttack(player),1);
+                            reflectionPenetratingDamage(a, player, f);
+                            a.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,10,4));
+                            float h=player.getHealth()+2+random.nextInt(2);
+                            if (h>player.getMaxHealth())h=player.getMaxHealth();
+                            player.setHealth(h);
                         }
                     }
                 }

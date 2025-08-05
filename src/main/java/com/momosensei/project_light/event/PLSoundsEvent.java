@@ -32,7 +32,6 @@ public class PLSoundsEvent {
         if (stack.is(PLItem.censored_ego.get())){
             String s = "censored_extra_attack";
             if (tag.getInt(s) == 13) player.playSound(PLSounds.ExtraCensoredAttack.get(),0.8f,1);
-
         }
     }
 }
