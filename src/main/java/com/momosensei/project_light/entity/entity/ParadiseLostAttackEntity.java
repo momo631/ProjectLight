@@ -1,6 +1,5 @@
 package com.momosensei.project_light.entity.entity;
 
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.Projectile;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -14,7 +13,6 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.List;
 import java.util.Random;
 
 
@@ -58,11 +56,11 @@ public class ParadiseLostAttackEntity extends Projectile implements GeoEntity {
 		if (this.tickCount >= 21) {
 			this.discard();
 		}
-		List<Entity> ls0 = this.level().getEntitiesOfClass(Entity.class, this.getBoundingBox());
-		for (Entity entity1 : ls0) {
-			if (entity1!=this&&entity1 instanceof ParadiseLostAttackEntity){
-				this.discard();
-			}
-		}
+//		List<Entity> ls0 = this.level().getEntitiesOfClass(Entity.class, this.getBoundingBox());
+//		for (Entity entity1 : ls0) {
+//			if (entity1!=this&&entity1 instanceof ParadiseLostAttackEntity){
+//				this.discard();
+//			}
+//		}
 	}
 }

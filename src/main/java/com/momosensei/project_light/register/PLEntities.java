@@ -19,7 +19,7 @@ public class PLEntities {
     public static final RegistryObject<EntityType<ParadiseLostAttackEntity>> paradise_lost_attack_entity =
             ENTITIES.register("paradise_lost_attack_entity",
                     () -> EntityType.Builder.of(ParadiseLostAttackEntity::new, MobCategory.MISC)
-                            .sized(1.6f, 2.2f) // 碰撞箱大小 (宽, 高)
+                            .sized(1.8f, 1.8f) // 碰撞箱大小 (宽, 高)
                             .clientTrackingRange(20) // 客户端追踪距离
                             .build("project_light:paradise_lost_attack_entity"));
     @SubscribeEvent

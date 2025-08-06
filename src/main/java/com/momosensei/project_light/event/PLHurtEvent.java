@@ -7,6 +7,7 @@ import com.momosensei.project_light.register.PLItem;
 import com.momosensei.project_light.sounds.PLSounds;
 import com.momosensei.project_light.util.AttackUtil;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -17,13 +18,18 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSwapItemsEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -31,8 +37,7 @@ import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.lwjgl.glfw.GLFW;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static com.momosensei.project_light.util.AttackUtil.*;
 import static com.momosensei.project_light.util.PenetratingDamage.reflectionPenetratingDamage;
@@ -197,11 +202,7 @@ public class PLHurtEvent {
             if (stack.is(PLItem.paradise_lost_ego.get())) {
                 living.invulnerableTime = 0;
                 event.setAmount(0);
-                if (player.level() instanceof ServerLevel level) {
-                    ParadiseLostAttackEntity entity=new ParadiseLostAttackEntity(PLEntities.paradise_lost_attack_entity.get(),level);
-                    entity.setPos(living.position());
-                    level.addFreshEntity(entity);
-                }
+
             }
         }
         if (a instanceof Player player) {
@@ -419,29 +420,76 @@ public class PLHurtEvent {
                 }
                 setSpecialAttack(true);
                 tag.putInt(s, tag.getInt(s) - 1);
+                if (tag.getInt(s) == 38) {
+                    handleAttackEffect(player, 40);
+                    List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(40));
+                    for (LivingEntity a : ls0) {
+                        if (a != player && a != null) {
+                            float e = (c + random.nextInt(6));
+                            if (ls0.size() >= 3 && ls0.size() <= 6) e = (c - 3 + random.nextInt(4));
+                            else if (ls0.size() >= 7) e = (c - 6 + random.nextInt(4));
+                            float f = e * a.getMaxHealth() * 0.01f;
+                            if (a.getMaxHealth() < 100) {
+                                f = e;
+                            }
 
-                List<LivingEntity> ls0 = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(40));
-                for (LivingEntity a : ls0) {
-                    if (a != player && a != null) {
-                        float e = (c +random.nextInt(6));
-                        if (ls0.size()>=3&&ls0.size()<=6)e=(c -3+random.nextInt(4));else
-                        if (ls0.size()>=7)e=(c -6+random.nextInt(4));
-                        float f = e * a.getMaxHealth() * 0.01f;
-                        if (a.getMaxHealth() < 100) {
-                            f = e;
-                        }
-                        if (tag.getInt(s) == 38) {
-                            OtherDamageHurt(a,player,player.level().damageSources().playerAttack(player),1);
+                            OtherDamageHurt(a, player, player.level().damageSources().playerAttack(player), 1);
                             reflectionPenetratingDamage(a, player, f);
-                            a.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,10,4));
-                            float h=player.getHealth()+2+random.nextInt(2);
-                            if (h>player.getMaxHealth())h=player.getMaxHealth();
+                            a.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 4));
+                            float h = player.getHealth() + 2 + random.nextInt(2);
+                            if (h > player.getMaxHealth()) h = player.getMaxHealth();
                             player.setHealth(h);
                         }
                     }
                 }
             }
         }
+    }
+    private void handleAttackEffect(Player player,double radius) {
+        // 获取玩家位置
+        Vec3 playerPos = player.position();
+        // 获取周围所有生物
+        List<LivingEntity> nearbyEntities = player.level().getEntitiesOfClass(
+                LivingEntity.class,
+                new AABB(playerPos.x - radius, playerPos.y - radius, playerPos.z - radius,
+                        playerPos.x + radius, playerPos.y + radius, playerPos.z + radius),
+                e -> e != player // 排除玩家自己
+        );
+        // 筛选生物，确保它们之间有足够距离
+        List<LivingEntity> filteredEntities = filterEntitiesByDistance(nearbyEntities, 2);
+        // 在每个筛选后的生物脚下生成实体
+        for (LivingEntity entity : filteredEntities) {
+            spawnEntityAtEntityFeet(player.level(), entity);
+        }
+    }
 
+    private List<LivingEntity> filterEntitiesByDistance(List<LivingEntity> entities, double minDistance) {
+        List<LivingEntity> result = new ArrayList<>();
+        List<LivingEntity> processed = new ArrayList<>();
+        for (LivingEntity entity : entities) {
+            // 检查是否已经处理过这个实体或附近的实体
+            if (processed.contains(entity))continue;
+            // 添加到结果列表
+            result.add(entity);
+            processed.add(entity);
+            // 查找与当前实体距离过近的其他实体
+            Vec3 pos1 = entity.position();
+            for (LivingEntity other : entities) {
+                if (other != entity && !processed.contains(other)) {
+                    Vec3 pos2 = other.position();
+                    if (pos1.distanceTo(pos2) < minDistance) {
+                        processed.add(other); // 标记为已处理，不再单独生成实体
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private void spawnEntityAtEntityFeet(Level level, LivingEntity entity) {
+        Vec3 feetPos = entity.position();
+        ParadiseLostAttackEntity itemEntity = new ParadiseLostAttackEntity(PLEntities.paradise_lost_attack_entity.get(),level);
+        itemEntity.setPos(feetPos);
+        level.addFreshEntity(itemEntity);
     }
 }
