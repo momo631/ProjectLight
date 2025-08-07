@@ -29,7 +29,7 @@ import java.util.function.DoubleSupplier;
 
 public class AttackUtil {
     public AttackUtil() {
-        MinecraftForge.EVENT_BUS.addListener(this::OnLivingHurt);
+
     }
 
     public static float getCooldownFunctionFloat(Player player, InteractionHand hand){
@@ -160,32 +160,18 @@ public class AttackUtil {
         }
         return false;
     }
-    private void OnLivingHurt(LivingHurtEvent event) {
-        Entity a = event.getEntity();
-        Entity b = event.getSource().getEntity();
-        if (a instanceof Player player&&b instanceof LivingEntity living){
-            CompoundTag c = living.getPersistentData();
-            String s = "paradise_lost_can_attack";
-            for (int j = 0; j < player.getInventory().items.size(); j++) {
-                ItemStack stack = player.getInventory().getItem(j);
-                if (stack.getItem() == PLItem.paradise_lost_ego.get()) {
-                    c.putUUID(s,player.getUUID());
-                }
-            }
-        }
-    }
+
     public static List<LivingEntity> getTrueHostileAndNeutralMobs(Level level, Player player, double range) {
         return level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(range), mob -> {
             // 排除条件
             if (isTamedByPlayer(mob, player) || isPassiveFriendly(mob)) {
                 return false;
             }
-            CompoundTag c = mob.getPersistentData();
-            String s = "paradise_lost_can_attack";
             // 包含条件
-            return isHostile(mob) || isNeutral(mob)||c.getUUID(s)==player.getUUID();
+            return isHostile(mob) || isNeutral(mob);
         });
     }
+
     private static boolean isHostile(LivingEntity mob) {
         // 标准敌对生物
         if (mob instanceof Monster) return true;
