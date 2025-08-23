@@ -56,6 +56,7 @@ public class paradise_lost_ego extends Item{
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
         boolean retval = super.onEntitySwing(stack, entity);
         if (entity instanceof Player player&&player.getMainHandItem().is(stack.getItem())) {
+            if (player.isUsingItem())return retval;
             CompoundTag c = stack.getOrCreateTag();
             String s = "paradise_lost_attack";
             if (stack.is(PLItem.paradise_lost_ego.get())) {
@@ -67,7 +68,21 @@ public class paradise_lost_ego extends Item{
         }
         return retval;
     }
-
+//    @Override
+//    public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {
+//        ItemStack stack1=player.getMainHandItem();
+//        if (stack1.is(stack.getItem())) {
+//            CompoundTag c = stack.getOrCreateTag();
+//            String s = "paradise_lost_attack";
+//            if (stack.is(PLItem.paradise_lost_ego.get())) {
+//                if (c.getInt(s)==0) {
+//                    UseitemAnimaton(player.level(), "animation.paradise_lost.attack", player);
+//                    c.putInt(s, 60);
+//                }
+//            }
+//        }
+//        return true;
+//    }
 
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
         return equipmentSlot == EquipmentSlot.MAINHAND ? this.attributes : super.getDefaultAttributeModifiers(equipmentSlot);

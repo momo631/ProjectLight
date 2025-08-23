@@ -34,5 +34,8 @@ public class PLTables {
         output.accept(PLItem.smile_ego.get());
         output.accept(PLItem.censored_ego.get());
         output.accept(PLItem.paradise_lost_ego.get());
+        output.accept(PLItem.apostles_sickle.get());
+        output.accept(PLItem.apostles_staff.get());
+        output.accept(PLItem.apostles_spear.get());
     }
 }

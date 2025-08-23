@@ -160,31 +160,36 @@ public class AttackUtil {
         }
         return false;
     }
-
     public static List<LivingEntity> getTrueHostileAndNeutralMobs(Level level, Player player, double range) {
-        return level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(range), mob -> {
-            // 排除条件
-            if (isTamedByPlayer(mob, player) || isPassiveFriendly(mob)) {
-                return false;
-            }
-            // 包含条件
-            return isHostile(mob) || isNeutral(mob);
-        });
+        return level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(range), mob -> !isTamedByPlayer(mob, player) && !isPassiveFriendly(mob)&&mob!=player&&!(mob instanceof Player));
     }
-
-    private static boolean isHostile(LivingEntity mob) {
-        // 标准敌对生物
-        if (mob instanceof Monster) return true;
-        // 特殊敌对生物
-        EntityType<?> type = mob.getType();
-        return type == EntityType.SLIME ||
-                type == EntityType.MAGMA_CUBE ||
-                type == EntityType.PHANTOM ||
-                type.is(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES);
-    }
-    private static boolean isNeutral(LivingEntity mob) {
-        return mob instanceof NeutralMob neutral && !(neutral instanceof TamableAnimal tamable && tamable.isTame());
-    }
+//    public static List<LivingEntity> getTrueHostileAndNeutralMobs(Level level, Player player, double range) {
+//        return level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(range), mob -> {
+//            // 排除条件
+//            if (isTamedByPlayer(mob, player) || isPassiveFriendly(mob)) {
+//                return false;
+//            }
+//            // 包含条件
+//            return isHostile(mob) || isNeutral(mob)||isTarget(mob,player);
+//        });
+//    }
+//
+//    private static boolean isHostile(LivingEntity mob) {
+//        // 标准敌对生物
+//        if (mob instanceof Monster) return true;
+//        // 特殊敌对生物
+//        EntityType<?> type = mob.getType();
+//        return type == EntityType.SLIME ||
+//                type == EntityType.MAGMA_CUBE ||
+//                type == EntityType.PHANTOM ||
+//                type.is(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES);
+//    }
+//    private static boolean isTarget(LivingEntity mob,Player player) {
+//        return (mob instanceof Monster monster && monster.getTarget() != null && monster.getTarget().is(player));
+//    }
+//    private static boolean isNeutral(LivingEntity mob) {
+//        return mob instanceof NeutralMob neutral && !(neutral instanceof TamableAnimal tamable && tamable.isTame());
+//    }
     private static boolean isTamedByPlayer(LivingEntity mob, Player player) {
         return mob instanceof TamableAnimal tamable && tamable.isTame() && tamable.getOwnerUUID() != null && tamable.getOwnerUUID().equals(player.getUUID());
     }

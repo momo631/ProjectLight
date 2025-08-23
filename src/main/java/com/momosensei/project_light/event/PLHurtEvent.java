@@ -1,39 +1,26 @@
 package com.momosensei.project_light.event;
 
-import com.momosensei.project_light.entity.entity.ParadiseLostAttackEntity;
 import com.momosensei.project_light.register.PLDamageSource;
-import com.momosensei.project_light.register.PLEntities;
 import com.momosensei.project_light.register.PLItem;
 import com.momosensei.project_light.sounds.PLSounds;
 import com.momosensei.project_light.util.AttackUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.trading.Merchant;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSwapItemsEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -42,8 +29,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.*;
-import java.util.function.Predicate;
 
+import static com.momosensei.project_light.event.UseitemAnimatonEvent.UseitemAnimaton;
 import static com.momosensei.project_light.util.AttackUtil.*;
 import static com.momosensei.project_light.util.PenetratingDamage.reflectionPenetratingDamage;
 
@@ -84,10 +71,34 @@ public class PLHurtEvent {
         if (event.isCancelable() && (getExtraAttack()||getSpecialAttack())) {
             event.setCanceled(true);
         }
+        Player player=event.getEntity();
+        ItemStack stack=player.getMainHandItem();
+        if (stack.is(PLItem.paradise_lost_ego.get())) {
+            CompoundTag c = stack.getOrCreateTag();
+            String s = "paradise_lost_attack";
+            if (stack.is(PLItem.paradise_lost_ego.get())) {
+                if (c.getInt(s)==0) {
+                    UseitemAnimaton(player.level(), "animation.paradise_lost.attack", player);
+                    c.putInt(s, 60);
+                }
+            }
+        }
     }
     public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (event.isCancelable() && (getExtraAttack()||getSpecialAttack())) {
             event.setCanceled(true);
+        }
+        Player player=event.getEntity();
+        ItemStack stack=player.getMainHandItem();
+        if (stack.is(PLItem.paradise_lost_ego.get())) {
+            CompoundTag c = stack.getOrCreateTag();
+            String s = "paradise_lost_attack";
+            if (stack.is(PLItem.paradise_lost_ego.get())) {
+                if (c.getInt(s)==0) {
+                    UseitemAnimaton(player.level(), "animation.paradise_lost.attack", player);
+                    c.putInt(s, 60);
+                }
+            }
         }
     }
     public void onMouseScrolling(InputEvent.MouseScrollingEvent event) {
@@ -213,7 +224,9 @@ public class PLHurtEvent {
         if (a instanceof Player player) {
             ItemStack stack = player.getMainHandItem();
             if (!stack.isEmpty() && stack.is(PLItem.censored_ego.get()) && !player.isDeadOrDying()) {
-                player.heal(event.getAmount() * 0.4f);
+                float h =player.getHealth() + event.getAmount() * 0.4f;
+                if (h > player.getMaxHealth()) h = player.getMaxHealth();
+                player.setHealth(h);
             }
         }
     }
