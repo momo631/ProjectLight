@@ -20,7 +20,6 @@ import static com.momosensei.project_light.ProjectLight.MOD_ID;
 @Mod.EventBusSubscriber(modid =MOD_ID,
         bus = Mod.EventBusSubscriber.Bus.MOD
 )
-
 public class ProjectLight {
     public static final String MOD_ID = "project_light"; //是你的模组名，需要英文
     public ProjectLight() {
@@ -34,7 +33,6 @@ public class ProjectLight {
         PLEffects.EFFECT.register(eventBus);
         PLEntities.ENTITIES.register(eventBus);
         PLSounds.SOUNDS.register(eventBus);
-
         MinecraftForge.EVENT_BUS.register(new PLHurtEvent());
         MinecraftForge.EVENT_BUS.register(new PLSoundsEvent());
 

@@ -16,7 +16,7 @@ public class PLTables {
     public static final RegistryObject<CreativeModeTab> tabTables = CREATIVE_TAB.register(
             "items", () -> CreativeModeTab.builder()
                     .title(Component.translatable("item.project_light"))
-                    .icon(() -> new ItemStack(PLItem.twilight_ego_a.get()))
+                    .icon(() -> new ItemStack(PLItem.twilight_ego.get()))
                     .displayItems(PLTables::addTabItems)
                     .build());
 

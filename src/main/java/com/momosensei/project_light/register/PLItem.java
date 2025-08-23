@@ -19,7 +19,6 @@ public class PLItem {
     }
 
     public static final RegistryObject<Item> laomo = ITEMS.register("laomo", () -> new Item(PLTables.items()));
-    public static final RegistryObject<Item> twilight_ego_a = ITEMS.register("twilight_ego_a", () -> new Item(PLTables.items()));
 
     public static final RegistryObject<twilight_ego> twilight_ego = ITEMS.register("twilight_ego", () -> new twilight_ego(PLTables.items()));
 
